@@ -32,10 +32,28 @@ To sum it up, we have a list of statements that are labeled according to their t
 
 
 # A list of internal milestones up until project milestone 2
+### Milestone 1: Data collection and wrangling
+- fully understand the given dataset with a preliminary data analysis
+- collect and identify more related data, e.g. voter turnouts, election results, population statistics
+- define and set research questions
+### Milestone 2: Detailed data analysis
+### Milestone 3: Data story and visualization
+### Milestone 4: Conclusion and report
+### Milestone 5: Poster and presentation
+
+## Global Milestone 1:
+**Deadline**: November 4th
+## Global Milestone 2:
+**Deadline**: November 25th 
+## Global Milestone 3:
+**Deadline**: December 16th
+## Global Milestone 4:
+**Deadline**: January
 
 
 # Questions for TAa
 We do not have specific questions at that point.
+
 
 # References
 - Paper: William Yang Wang, "Liar, Liar Pants on Fire": A New Benchmark Dataset for Fake News Detection, to appear in Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics (ACL 2017), web: [https://arxiv.org/pdf/1705.00648.pdf](https://arxiv.org/pdf/1705.00648.pdf),  short paper, Vancouver, BC, Canada, July 30-August 4, ACL.
