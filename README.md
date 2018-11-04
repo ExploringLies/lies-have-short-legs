@@ -21,13 +21,13 @@ Data are stored in 3 distinct files used for machine learning algorithms aiming 
 - Column 3: the statement, ex.: `Mark Sharpe has lowered property taxes by 17 percent.`
 - Column 4: the subject(s), ex.: `candidates-biography,taxes`
 - Column 5: the speaker, ex.: `mark-sharpe`
-- Column 6: the speaker's job title, ex.: `Hillsborough County commissioner`
+- Column 6: the speaker's political career , ex.: `Hillsborough County commissioner`
 - Column 7: the state info, ex.: `Florida`
 - Column 8: the party affiliation, ex.: `republican`
 - Column 9-13: the total credit history count, including the current statement, ex.: `1 / 0 / 0 / 0 / 0`
 - Column 14: the context (venue / location of the speech or statement), ex.: `a campaign mailer`
 
-To sum it up, we have a list of statements that are labeled according to their truthfulness from defined politicians whom we know their job title. Knowing that we have a decade of data, it enables us to analyse the relation between lies and job title. The Politifact API will provide us more details on the names, places, etc. 
+To sum it up, we have a list of statements that are labeled according to their truthfulness from defined politicians whom we know their political career. Knowing that we have a decade of data, it enables us to analyse the relation between lies and job title. The Politifact API will provide us more details on the names, places, etc. 
 
 
 # A list of internal milestones
@@ -46,7 +46,7 @@ To sum it up, we have a list of statements that are labeled according to their t
 **Deadline**: January  (_Global Milestone 4_)
 
 
-# Questions for TAa
+# Questions for TAs
 We do not have specific questions at that point.
 
 
