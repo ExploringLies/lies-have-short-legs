@@ -27,7 +27,7 @@ Data are stored in 3 distinct files used for machine learning algorithms aiming 
 - Column 9-13: the total credit history count, including the current statement, ex.: `1 / 0 / 0 / 0 / 0`
 - Column 14: the context (venue / location of the speech or statement), ex.: `a campaign mailer`
 
-To sum it up, we have a list of statements that are labeled according to their truthfulness from defined politicians whom we know their job title. Knowing that we have a decade of data, it enables us to analyse the relation between lies and job title. The other attributes will help us to analyse data in regard to party affiliation, geographical region or infer observations directly from the statements. 
+To sum it up, we have a list of statements that are labeled according to their truthfulness from defined politicians whom we know their job title. Knowing that we have a decade of data, it enables us to analyse the relation between lies and job title. The Politifact API will provide us more details on the names, places, etc. 
 
 
 # A list of internal milestones
@@ -55,3 +55,4 @@ We do not have specific questions at that point.
 - Dataset link: [https://www.cs.ucsb.edu/~william/data/liar_dataset.zip](https://www.cs.ucsb.edu/~william/data/liar_dataset.zip)
 - Github dataset link: [https://github.com/nishitpatel01/Fake_News_Detection/tree/master/liar_dataset](https://github.com/nishitpatel01/Fake_News_Detection/tree/master/liar_dataset)
 - Website: [https://www.cs.ucsb.edu/~william/software.html](https://www.cs.ucsb.edu/~william/software.html)
+- Politifact API: [https://www.politifact.com//api/v/2/statement/11685/?format=json](https://www.politifact.com//api/v/2/statement/11685/?format=json)
