@@ -2,7 +2,7 @@
 Title: **Lies walk on short legs?**
 
 # Abstract
-The old quote says “Lies walk on short legs”, but is it really true that we cannot get away with a lie and that the truth always comes out? In this project, we will explore LIAR dataset which includes 12 836 short statements labeled for truthfulness, speaker, party, context, dates, and other relevant information. With this information, the project idea is to analyze what happens to the people that lie and whether there is some trend that is followed. Our data story would include findings related to the nature of the relationship between people that lie and how it affects their job description. In addition, we would try to follow the speakers’ behavior during the time in order to find out when did they lie the most. We hope to give people an insight on whether lying will be fairly treated.
+The old quote says “Lies walk on short legs”, but is it really true that we cannot get away with a lie and that the truth always comes out? In this project, we will explore LIAR dataset which includes 12 836 short statements labeled for truthfulness, speaker, party, context, dates, and other relevant information. With this information, the project idea is to analyze what happens to the people that lie and whether there is some trend that is followed. Our data story would include findings related to the nature of the relationship between people that lie and how it affects their job description. In addition, we would try to follow the speakers’ behavior during the time in order to find out when they lie the most. We hope to give people an insight on whether lying will be fairly treated.
 
 # Research questions
 Here are the research questions we would like to address during the project:  
