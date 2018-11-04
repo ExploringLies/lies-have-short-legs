@@ -31,24 +31,20 @@ Data are stored in 3 distinct files used for machine learning algorithms aiming 
 To sum it up, we have a list of statements that are labeled according to their truthfulness from defined people whom we know their job title. Knowing that we have a decade of data, it enables us to analyse the relation between lies and job title.
 
 
-# A list of internal milestones up until project milestone 2
+# A list of internal milestones
 ### Milestone 1: Data collection and wrangling
+**Deadline**: November 11th
 - fully understand the given dataset with a preliminary data analysis
 - collect and identify more related data, e.g. voter turnouts, election results, population statistics
 - define and set research questions
 ### Milestone 2: Detailed data analysis
+**Deadline**: November 18th
 ### Milestone 3: Data story and visualization
+**Deadline**: November 25th (_Global Milestone 2_)
 ### Milestone 4: Conclusion and report
+**Deadline**: December 16th (_Global Milestone 3_)
 ### Milestone 5: Poster and presentation
-
-## Global Milestone 1:
-**Deadline**: November 4th
-## Global Milestone 2:
-**Deadline**: November 25th 
-## Global Milestone 3:
-**Deadline**: December 16th
-## Global Milestone 4:
-**Deadline**: January
+**Deadline**: January  (_Global Milestone 4_)
 
 
 # Questions for TAa
