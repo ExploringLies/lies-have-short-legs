@@ -2,7 +2,7 @@
 Title: **Lies walk on short legs?**
 
 # Abstract
-The old quote says “Lies walk on short legs”. But is it really true that we cannot get away with a lie and that the truth always comes out? In this project, we will explore LIAR dataset which includes 12 836 short statements labeled for truthfulness, speaker, party, context, dates, and other relevant information. With this information, the project idea is to analyze what happens to the people that lie and whether there is some trend that is followed. Our data story would include findings related to the nature of the relationship between people that lie and how it affects their job description. In addition, we would try to follow the speakers’ behavior during the time in order to find out when they lie the most. We hope to give people an insight on whether lying will be fairly treated.
+The old quote says “Lies walk on short legs”. But is it really true that we cannot get away with a lie and that the truth always comes out? In this project, we will explore LIAR dataset which includes 12 836 short statements labeled for truthfulness, speaker, party, context, dates, and other relevant information. With this information, the project idea is to analyze what happens to politicians that lie and whether there is some trend that is followed. Our data story would include findings related to the nature of the relationship between politicians that lie and how it affects their job description. In addition, We would like to compare the places in time where the lies where made, to identify a possible seasonality? We hope to give people an insight on whether lying will be fairly treated.
 
 # Research questions
 Here are the research questions we would like to address during the project:  
@@ -10,11 +10,10 @@ Here are the research questions we would like to address during the project:
 - When do they lie? Do they lie before elections?
 - Is there a correlation between politicians being voted out of office and their lies?
 - Do politicians coming from different countries lie more? Do they lie more when doing federal vs state politics?
-- Extracting keywords from the text, we determine what are the subject that people lie the most?
 
 
 # Dataset
-The dataset we will use is a public fake-news dataset containing around 12 thousand statements making it sufficiently large to perform analysis on it. It was produced from [POLITIFACT website](politifact.com), a website reporting on the accuracy of statements made by people involved in U.S. politics. These data were gathered by William Yang Wang from the Department of Computer Science University of California for the purpose of automatic fake news detection.
+The dataset we will use is a public dataset about fake-news containing around 12 thousand statements making it sufficiently large to perform analysis on it. It was produced from [POLITIFACT website](politifact.com), a website reporting on the accuracy of statements made by people involved in U.S. politics. These data were gathered by William Yang Wang from the Department of Computer Science University of California for the purpose of automatic fake news detection.
 Data are stored in 3 distinct files used for machine learning algorithms aiming at identifying truthfulness of news. They are the training, test and validation sets. These files are stored in a tab-separated values (TSV) format. They contain all the same structure and have the following attributes:
 
 - Column 1: the ID of the statement (`[ID].json`), ex.: `2255.json`
@@ -28,7 +27,7 @@ Data are stored in 3 distinct files used for machine learning algorithms aiming 
 - Column 9-13: the total credit history count, including the current statement, ex.: `1 / 0 / 0 / 0 / 0`
 - Column 14: the context (venue / location of the speech or statement), ex.: `a campaign mailer`
 
-To sum it up, we have a list of statements that are labeled according to their truthfulness from defined people whom we know their job title. Knowing that we have a decade of data, it enables us to analyse the relation between lies and job title. The other attributes will help us to analyse data in regard to party affiliation, geographical region or infer observations directly from the statements. 
+To sum it up, we have a list of statements that are labeled according to their truthfulness from defined politicians whom we know their job title. Knowing that we have a decade of data, it enables us to analyse the relation between lies and job title. The other attributes will help us to analyse data in regard to party affiliation, geographical region or infer observations directly from the statements. 
 
 
 # A list of internal milestones
@@ -56,4 +55,3 @@ We do not have specific questions at that point.
 - Dataset link: [https://www.cs.ucsb.edu/~william/data/liar_dataset.zip](https://www.cs.ucsb.edu/~william/data/liar_dataset.zip)
 - Github dataset link: [https://github.com/nishitpatel01/Fake_News_Detection/tree/master/liar_dataset](https://github.com/nishitpatel01/Fake_News_Detection/tree/master/liar_dataset)
 - Website: [https://www.cs.ucsb.edu/~william/software.html](https://www.cs.ucsb.edu/~william/software.html)
-- Python Package we will probably use for determination of keywords and checking what are the topics people lie the most: [https://pypi.org/project/rake-nltk/](https://pypi.org/project/rake-nltk/)
