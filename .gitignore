@@ -1,8 +1,5 @@
-# datasets
-liar_dataset/
 
 # Created by https://www.gitignore.io/api/python,jupyternotebook
-# Edit at https://www.gitignore.io/?templates=python,jupyternotebook
 
 ### JupyterNotebook ###
 .ipynb_checkpoints
@@ -124,9 +121,6 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
-# Pyre type checker
-.pyre/
-
 ### Python Patch ###
 .venv/
 
@@ -141,5 +135,6 @@ dmypy.json
 [Ss]cripts
 pyvenv.cfg
 pip-selfcheck.json
+
 
 # End of https://www.gitignore.io/api/python,jupyternotebook
