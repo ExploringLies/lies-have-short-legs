@@ -36,18 +36,39 @@ To sum it up, we have a list of statements that are labeled according to their t
 - fully understand the given dataset with a preliminary data analysis
 - collect and identify more related data, e.g. voter turnouts, election results, population statistics
 - define and set research questions
-### Milestone 2: Detailed data analysis
+
+### Milestone 2: Detailed data analysis (start)
 **Deadline**: November 18th
-### Milestone 3: Data story and visualization
+- analysis of data (just the train/test/validation sets not including ones from web scraping)
+- changing and adding new research questions
+
+### Milestone 3: Detailed data analysis
 **Deadline**: November 25th (_Global Milestone 2_)
-### Milestone 4: Conclusion and report
+- analysis of data (including ones from web scraping)
+- changing and adding new research questions
+- the project repo contains a notebook with data collection and descriptive analysis, properly commented, 
+- the notebook ends with a more structured and informed plan for what comes next (all the way to a plan for the presentation) - these sections of the notebook should be filled in by _Global Milestone 3_.  
+
+### Milestone 3: Data Story and Visualization (start)
+**Deadline**: December 2nd
+- creating a website
+- creating initial scatcches
+
+### Milestone 3: Data Story and Visualization
+**Deadline**: December 9th
+- TODO
+
+### Milestone 4: Conclusion with data story
 **Deadline**: December 16th (_Global Milestone 3_)
+- 4-page PDF document or a data story in a platform of your choice (e.g., a blog post, or directly in GitHub)
+- the final notebook (continuation of _Global Milestone 2_).
+
 ### Milestone 5: Poster and presentation
 **Deadline**: January  (_Global Milestone 4_)
-
+- presentation of posters and (optionally) whatever else tickles your fancy (e.g., on-screen demos)  
 
 # Questions for TAs
-We do not have specific questions at that point.
+TODO
 
 
 # References
