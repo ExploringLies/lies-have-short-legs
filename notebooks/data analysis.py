@@ -93,26 +93,28 @@ additional_information = pseq(pathlib.Path('../liar_dataset/statements/').iterdi
                                .map(extract_information)\
                                .to_pandas()
 
+additional_information['statement_date'] = pd.to_datetime(additional_information['statement_date'])
+
+# <codecell>
+
 df['statement_id'] = pd.to_numeric(df['statement_id'])
-df['statement_date'] = pd.to_datetime(df['statement_date'])
-
-df = df.merge(additional_information, on='statement_id', how='left')
+lies = df.merge(additional_information, on='statement_id', how='left')
 
 # <codecell>
 
-df.loc[df['speaker'] == 'barack-obama', ]['pants_on_fire_counts'].value_counts()
+lies.loc[lies['speaker'] == 'barack-obama', ]['pants_on_fire_counts'].value_counts()
 
 # <codecell>
 
-df[df['speakers_job_title'].str.contains('County') == True].shape
+lies[lies['speakers_job_title'].str.contains('County') == True].shape
 
 # <codecell>
 
-df['statement_date'].describe()
+lies['statement_date'].describe()
 
 # <codecell>
 
-pandas_profiling.ProfileReport(df)
+pandas_profiling.ProfileReport(lies)
 
 # <markdowncell>
 
@@ -125,50 +127,104 @@ pd.options.display.max_columns = 300
 
 # <codecell>
 
-senate_results_2016 = pd.read_excel('../data/election_results/federalelections2016.xlsx', sheet_name='2016 US Senate Results by State')
+from itertools import product
+from functools import reduce
 
 # <codecell>
 
-# removing the aggregations inside the table
-senate_results_2016 = senate_results_2016[senate_results_2016['CANDIDATE NAME'].notna()]
+def add_ending(f):
+    if '2016' in f:
+        return f"{f}x"
+    else:
+        return f
+    
+# TODO do 2012 it's a special snowflake
+election_files = [(add_ending(f'../data/election_results/federalelections{year}.xls'), year) for year in [2014, 2016]]
 
 # <codecell>
 
-senate_results_2016[:10]
+election_results_cols_of_interest = ['CANDIDATE NAME', 'PRIMARY VOTES', 'PRIMARY %']
+
+def fix_columns_election_results(df, year, type_):
+    df = df.loc[:, election_results_cols_of_interest]
+    df[f'primary_votes_{type_.lower()}_{year}'] = df['PRIMARY VOTES']
+    df[f'primary_votes_{type_.lower()}_{year}_pct'] = df['PRIMARY %']
+    return df.drop(columns=['PRIMARY VOTES', 'PRIMARY %'])
+
+
+def get_only_voting_results(df):
+    return df.loc[df['CANDIDATE NAME'].notna() & df['PRIMARY VOTES'].notna() & df['CANDIDATE NAME'].ne('Scattered') & df['CANDIDATE NAME'].ne('All Others'), :]
+
+
+def prep_election_results(df, year, type_):
+    return fix_columns_election_results(get_only_voting_results(df), year, type_)
 
 # <codecell>
 
-df[:10]
+election_results = [prep_election_results(pd.read_excel(f, sheet_name=f'{year} US {type_} Results by State'), year, type_) for (f, year), type_ in product(election_files, ['Senate', 'House'])]
+
+election_results = reduce(lambda acc, el: pd.merge(acc, el, on='CANDIDATE NAME', how='outer'), election_results)
 
 # <codecell>
 
-# we are only interest in people and they have a name
-df = df.loc[df['speaker_first_name'].notnull(), :]
+# yeah ... let's see how many we can join. the one letter endings might be a problem
+election_results['CANDIDATE NAME'].value_counts()
 
 # <codecell>
 
-df['statement_year'] = df['statement_date'].dt.year
+# we are only interest in people and they have a first name
+lies = lies.loc[lies['speaker_first_name'].notnull(), :]
 
 # <codecell>
 
-df['speaker_full_name'] = df['speaker_last_name'] + ', ' + df['speaker_first_name']
+# to aggregate the statements
+lies['statement_year'] = lies['statement_date'].dt.year
+
+# for the merging
+lies['speaker_full_name'] = lies['speaker_last_name'] + ', ' + lies['speaker_first_name']
 
 # <codecell>
 
-_t = senate_results_2016.loc[:, ['STATE', 'CANDIDATE NAME', 'PRIMARY VOTES', 'PRIMARY %']]
-_t = df.merge(_t, left_on='speaker_full_name', right_on='CANDIDATE NAME', how='left')
+# todo expand this
+# is it really houseman? probably not...
+_job_titles_of_interest = [('senat', 'senator'), ('governor', None), ('congress', 'congressman'), ('mayor', None), ('president', None), ('house', 'houseman'), ('rep', 'houseman')]
+job_titles_of_interest = [out if out is not None else j for j, out in _job_titles_of_interest]
+
+def cleaned_job_title(jt):
+    jt = str(jt).lower()
+    
+    for j, out in _job_titles_of_interest:
+        if j in jt:
+            return out if out is not None else j
+    else:
+        return jt
+
+lies['speakers_job_title_cleaned'] = lies['speakers_job_title'].apply(cleaned_job_title)
 
 # <codecell>
 
-_t['STATE'].notnull().mean() # well... either we get not many or we need to improve our matching
+_t = lies.merge(election_results, left_on='speaker_full_name', right_on='CANDIDATE NAME', how='outer')
 
 # <codecell>
 
-print(f"found election results for {_t['STATE'].notnull().sum()} people")
+print(f"found election results for {_t['CANDIDATE NAME'].notnull().sum()} ({_t['CANDIDATE NAME'].notnull().mean()}%) people")
 
 # <codecell>
 
-print(f"found useful results for {(_t['STATE'].notnull() & _t['PRIMARY VOTES'].notnull()).sum()} people")
+useful_idx = reduce(lambda acc, el: acc | el, [_t[c].notnull() for c in _t.columns if 'votes' in c]) & _t['speaker'].notnull()
+
+print(f"found useful results for {useful_idx.sum()} people")
+
+columns_of_interest = ['label', 'subject', 'speaker', 'speakers_job_title_cleaned', 'state_info', 'party_affiliation', 'context', 'statement_date'] + [c for c in _t.columns if 'votes' in c]
+_t.loc[useful_idx, columns_of_interest]
+
+# <codecell>
+
+_t.loc[useful_idx, 'speakers_job_title_cleaned'].value_counts()
+
+# <codecell>
+
+_t.loc[_t['speakers_job_title_cleaned'].isin(job_titles_of_interest), columns_of_interest]
 
 # <codecell>
 
