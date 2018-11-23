@@ -97,6 +97,13 @@ additional_information['statement_date'] = pd.to_datetime(additional_information
 
 # <codecell>
 
+def label_to_nb(l): 
+    return ['true', 'mostly-true', 'half-true', 'barely-true', 'false', 'pants-fire'].index(l)
+
+df['label_as_nb'] = df['label'].apply(label_to_nb) * 2 # TODO think about this, this will give the false-hoods more weight
+
+# <codecell>
+
 df['statement_id'] = pd.to_numeric(df['statement_id'])
 lies = df.merge(additional_information, on='statement_id', how='left')
 
@@ -185,7 +192,7 @@ lies['speaker_full_name'] = lies['speaker_last_name'] + ', ' + lies['speaker_fir
 
 # <codecell>
 
-# todo expand this
+# todo expand this and check this! this is just a quick and dirty fix
 # is it really houseman? probably not...
 _job_titles_of_interest = [('senat', 'senator'), ('governor', None), ('congress', 'congressman'), ('mayor', None), ('president', None), ('house', 'houseman'), ('rep', 'houseman')]
 job_titles_of_interest = [out if out is not None else j for j, out in _job_titles_of_interest]
@@ -211,11 +218,12 @@ print(f"found election results for {_t['CANDIDATE NAME'].notnull().sum()} ({_t['
 
 # <codecell>
 
-useful_idx = reduce(lambda acc, el: acc | el, [_t[c].notnull() for c in _t.columns if 'votes' in c]) & _t['speaker'].notnull()
+votes_cols = [c for c in _t.columns if 'votes' in c]
+useful_idx = reduce(lambda acc, el: acc | el, [_t[c].notnull() for c in votes_cols]) & _t['speaker'].notnull()
 
 print(f"found useful results for {useful_idx.sum()} people")
 
-columns_of_interest = ['label', 'subject', 'speaker', 'speakers_job_title_cleaned', 'state_info', 'party_affiliation', 'context', 'statement_date'] + [c for c in _t.columns if 'votes' in c]
+columns_of_interest = ['label', 'label_as_nb', 'subject', 'speaker', 'speakers_job_title_cleaned', 'state_info', 'party_affiliation', 'context', 'statement_date'] + votes_cols
 _t.loc[useful_idx, columns_of_interest]
 
 # <codecell>
@@ -224,18 +232,15 @@ _t.loc[useful_idx, 'speakers_job_title_cleaned'].value_counts()
 
 # <codecell>
 
-_t.loc[_t['speakers_job_title_cleaned'].isin(job_titles_of_interest), columns_of_interest]
+_t.loc[_t['speakers_job_title_cleaned'].isin(job_titles_of_interest) & useful_idx, columns_of_interest]
+
+# <markdowncell>
+
+# # DATA SET COMPLETE
 
 # <codecell>
 
-def label_to_nb(l): 
-    return ['true', 'mostly-true', 'half-true', 'barely-true', 'false', 'pants-fire'].index(l)
-
-df['label_as_nb'] = df['label'].apply(label_to_nb)
-
-# <codecell>
-
-median_speaker_value = df.groupby(['statement_year', 'speaker'])['label_as_nb'].median().reset_index()
+median_speaker_value = _t.groupby(['statement_year', 'speaker'])['label_as_nb'].median().reset_index()
 
 # <codecell>
 
