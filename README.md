@@ -23,7 +23,7 @@ Here are the research questions we would like to address during the project:
 The dataset we will use is a public dataset about fake-news containing around 12 thousand statements making it sufficiently large to perform analysis on it. It was produced from [POLITIFACT website](politifact.com), a website reporting on the accuracy of statements made by people involved in U.S. politics. These data were gathered by William Yang Wang from the Department of Computer Science University of California for the purpose of automatic fake news detection.
 Data are stored in 3 distinct files used for machine learning algorithms aiming at identifying truthfulness of news. They are the training, test and validation sets. These files are stored in a tab-separated values (TSV) format. They contain all the same structure and have the following attributes:
 
-- Column 1: the ID of the statement (`[ID].json`), ex.: `2255.json`
+- Column 1: the ID of the statement (`[ID].json`), ex.: `2255.json`, the JSON keys received in this API call can be seen [here](http://jelenabanjac.com/lies-have-short-legs/data_insight/index.html).
 - Column 2: the label, ex.: `barely-true`
 - Column 3: the statement, ex.: `Mark Sharpe has lowered property taxes by 17 percent.`
 - Column 4: the subject(s), ex.: `candidates-biography,taxes`
