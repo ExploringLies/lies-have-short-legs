@@ -2,7 +2,14 @@
 Title: **Lies walk on short legs?**
 
 # Abstract
-The old quote says “Lies walk on short legs”. But is it really true that we cannot get away with a lie and that the truth always comes out? In this project, we will explore LIAR dataset which includes 12 836 short statements labeled for truthfulness, speaker, party, context, dates, and other relevant information. With this information, the project idea is to analyze what happens to politicians that lie and whether there is some trend that is followed. Our data story would include findings related to the nature of the relationship between politicians that lie and how it affects their job description. In addition, We would like to compare the places in time where the lies where made, to identify a possible seasonality? We hope to give people an insight on whether lying will be fairly treated.
+The old quote says _Lies have short legs_ meaning lies that have short legs are those that carry you a little distance but cannot outrun the truth. However, is it really true that we cannot get away with a lie and that the truth always comes out?  
+
+In this project, we will explore [LIAR dataset](https://www.cs.ucsb.edu/~william/data/) which includes 12 836 short statements labeled for truthfulness, speaker, party, context, dates, and other relevant information. Moreover, we will combine our dataset with election results collected from [US Election Atlas](https://uselectionatlas.org/) to enrich our insights.  
+
+With this information, the project idea is to analyze what happens to politicians that lie and whether there is some trend that is followed. Our data story would include findings related to the nature of the relationship between politicians that lie and how it affects their job description. In addition, we would like to compare the places in time where the lies where made, to identify a possible seasonality.  
+
+We hope to give people an insight on whether lying will be fairly treated.  
+
 
 # Research questions
 Here are the research questions we would like to address during the project:  
