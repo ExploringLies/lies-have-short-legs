@@ -7,10 +7,6 @@
       <img alt="First release" src="https://img.shields.io/badge/release-v1.0-brightgreen.svg" />
     </a> -->
   </p>
-
-  <p>
-    <strong>Lies have short legs?</strong>
-  </p>
   
   <p>
     <a href="http://jelenabanjac.com/lies-have-short-legs/">
