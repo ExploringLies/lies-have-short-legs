@@ -3,9 +3,9 @@
   <img src="https://i.gifer.com/dAP.gif" width="150" />
   </p>
   <p>
-    <a href="">
+<!--     <a href="">
       <img alt="First release" src="https://img.shields.io/badge/release-v1.0-brightgreen.svg" />
-    </a>
+    </a> -->
   </p>
 
   <p>
