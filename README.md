@@ -23,17 +23,39 @@ The old quote says _Lies have short legs_ meaning lies that have short legs are 
 
 In this project, we will explore [LIAR dataset](https://www.cs.ucsb.edu/~william/data/) which includes 12 836 short statements labeled for truthfulness, speaker, party, context, dates, and other relevant information. Moreover, we will combine our dataset with election results collected from [US Election Atlas](https://uselectionatlas.org/) to enrich our insights.  
 
-With this information, the project idea is to analyze what happens to politicians that lie and whether there is some trend that is followed. Our data story would include findings related to the nature of the relationship between politicians that lie and how it affects their job description. In addition, we would like to compare the places in time where the lies where made, to identify a possible seasonality.  
+With this information, the project idea is to analyze what happens to politicians that lie and whether there is some trend that is followed. Our data story would include findings related to the nature of the relationship between politicians that lie and how it affects their job description, e.g. they are voted out from the office. In addition, we would like to compare the places in time where the lies where made, to identify a possible seasonality.  
 
 We hope to give people an insight on whether lying will be fairly treated.  
 
 
 # Research questions
 Here are the research questions we would like to address during the project:  
-- How do politicians behave, are lies part of their politics?
-- When do they lie? Do they lie before elections?
-- Is there a correlation between politicians being voted out of office and their lies?
-- Do politicians coming from different countries lie more? Do they lie more when doing federal vs state politics?
+- **Number of lies per politicians or speaker**  
+geojson->statement_info/speaker/total_count and true count
+
+- **Evolution during time of lies (in percentage compared to the statements)**  
+geojson/statement_info/statement_date
+take the proportion of lies compared to all statements with a moving window or a hist plot
+
+- **Who are the biggest liars (people/groups/context)**  
+group by statement_info/speaker/id and first_name and last_name
+
+- **How do politicians behave, are lies part of their politics?**  
+Select politicians (column5), number of lies (count(where column2 is a lie)), number of sentences in total (count all lines grouped by column5)
+
+- **When do they lie? Do they lie before elections?**  
+Data needed: number of lies, number of sentence, dates, date of election
+
+- **Is there a correlation between politicians being voted out of office and their lies?**  
+politicians voted out, date, number of lies, number of sentences.
+
+- **Do politicians coming from different countries lie more?**  
+countries (states column 7), politicians (column 6), 
+
+- **Do they lie more when doing federal vs state politics?**  
+
+- **Are they parties who lies more?**  
+statement_info/speaker/party/party or id
 
 
 # Dataset
@@ -53,6 +75,8 @@ Data are stored in 3 distinct files used for machine learning algorithms aiming 
 
 To sum it up, we have a list of statements that are labeled according to their truthfulness from defined politicians whom we know their political career. Knowing that we have a decade of data, it enables us to analyse the relation between lies and job title. The Politifact API will provide us more details on the names, places, etc. 
 
+In addition, we will combine our dataset with election results collected from [US Election Atlas](https://uselectionatlas.org/) to enrich our insights and hopefully have a success in answering our research questions.
+
 
 # A list of internal milestones
 ### Milestone 1: Data collection and wrangling
@@ -69,31 +93,42 @@ To sum it up, we have a list of statements that are labeled according to their t
 ### Milestone 3: Detailed data analysis
 **Deadline**: November 25th (_Global Milestone 2_)
 - analysis of data (including ones from web scraping)
+- connecting LIAR dataset with the new one containing elections
 - changing and adding new research questions
-- the project repo contains a notebook with data collection and descriptive analysis, properly commented, 
+- the project repo contains two notebooks, with data collection and descriptive analysis  
 - the notebook ends with a more structured and informed plan for what comes next (all the way to a plan for the presentation) - these sections of the notebook should be filled in by _Global Milestone 3_.  
 
 ### Milestone 3: Data Story and Visualization (start)
 **Deadline**: December 2nd
+- finishing up the data analysis tasks in the notebooks, adding plots of the foundings
+- adding map visualizations
 - creating a website
-- creating initial scatcches
+- brainstorming design requirements
+- brainstorming the story flow
+- creating initial scatches of data story
 
 ### Milestone 3: Data Story and Visualization
 **Deadline**: December 9th
-- TODO
+- notebook final touches
+- implementing the initial version of visualization
+- writing explainations of the visualizations and our foundings
 
 ### Milestone 4: Conclusion with data story
 **Deadline**: December 16th (_Global Milestone 3_)
-- 4-page PDF document or a data story in a platform of your choice (e.g., a blog post, or directly in GitHub)
+- data story on a GitHub pages
+- writing conclusion
 - the final notebook (continuation of _Global Milestone 2_).
 
 ### Milestone 5: Poster and presentation
 **Deadline**: January  (_Global Milestone 4_)
 - presentation of posters and (optionally) whatever else tickles your fancy (e.g., on-screen demos)  
 
-# Questions for TAs
-TODO
-
+# For TAs  
+_Fixes_:
+- We enrich our insights with additional dataset regarding election results and collect statements
+- We checked LIAR dataset itself, together with statemets available through the API. In addition, we joined only the data we consider useful from this dataset with the one from US elections dataset. More details can be found in the notebooks.
+- Meaning of 'job description of a politician' in the abstract is hopefully clarified.
+- We fixed our research questions and hope they are more realistic and achievable now.
 
 # References
 - Paper: William Yang Wang, "Liar, Liar Pants on Fire": A New Benchmark Dataset for Fake News Detection, to appear in Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics (ACL 2017), web: [https://arxiv.org/pdf/1705.00648.pdf](https://arxiv.org/pdf/1705.00648.pdf),  short paper, Vancouver, BC, Canada, July 30-August 4, ACL.
