@@ -1,5 +1,22 @@
-# Title
-Title: **Lies walk on short legs?**
+<div align="center">
+  <p>
+  <img src="https://i.gifer.com/dAP.gif" width="150" />
+  </p>
+  <p>
+<!--     <a href="">
+      <img alt="First release" src="https://img.shields.io/badge/release-v1.0-brightgreen.svg" />
+    </a> -->
+  </p>
+  
+  <p>
+    <a href="http://jelenabanjac.com/lies-have-short-legs/">
+      Website
+    </a>
+  </p>
+</div>
+
+# Lies have short legs?
+Project for CS-401 Applied Data Analysis Course at EPFL
 
 # Abstract
 The old quote says _Lies have short legs_ meaning lies that have short legs are those that carry you a little distance but cannot outrun the truth. However, is it really true that we cannot get away with a lie and that the truth always comes out?  
