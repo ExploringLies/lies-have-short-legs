@@ -79,6 +79,9 @@ In addition, we will combine our dataset with election results collected from [U
 
 
 # A list of internal milestones
+
+[Trello board link](https://trello.com/b/o7QjOiJj/applied-data-analysis)
+
 ### Milestone 1: Data collection and wrangling
 **Deadline**: November 11th
 - fully understand the given dataset with a preliminary data analysis
