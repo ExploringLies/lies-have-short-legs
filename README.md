@@ -49,7 +49,7 @@ Data needed: number of lies, number of sentence, dates, date of election
 - **Is there a correlation between politicians being voted out of office and their lies?**  
 politicians voted out, date, number of lies, number of sentences.
 
-- **Do politicians coming from different countries lie more?**  
+- **Do politicians coming from different states lie more?**  
 countries (states column 7), politicians (column 6), 
 
 - **Do they lie more when doing federal vs state politics?**  
