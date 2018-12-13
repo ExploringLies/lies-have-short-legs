@@ -47,6 +47,11 @@ sys.path.append('../src')
 from utils import file, logging
 from utils.statement_handling import extract_information, safe_json_read
 
+from importlib import reload
+
+import utils.statement_handling as SH
+reload(SH)
+
 # <codecell>
 
 def group_and_count(df, groupby_column, with_pct=False, with_avg=False):
@@ -75,32 +80,17 @@ directory_county_data = "../data/county_data"
 
 # <codecell>
 
-df = pd.concat([pd.read_csv(f"{directory_liar_dataset}/{part}.tsv", sep='\t', header=None) for part in ['train', 'valid']])
-df.columns = ['statement_id', 'label', 'statement', 'subject', 'speaker', 'speakers_job_title', 'state_info', 'party_affiliation', 'barely_true_counts', 'false_counts', 'half_true_counts', 'mostly_true_counts', 'pants_on_fire_counts', 'context']
-# removing .json and getting just ID
-df.statement_id = df.statement_id.apply(lambda x: x[:-5])  
-
-# <codecell>
-
-df.head(2)
-
-# <markdowncell>
-
-# And now, let's read the data regarding corresponding statements and merge useful information from statements with the liar dataset:
-
-# <codecell>
-
-additional_information = seq(pathlib.Path(directory_statements).iterdir()).map(safe_json_read)\
+statements = seq(pathlib.Path(directory_statements).iterdir()).map(safe_json_read)\
                                .filter(lambda x: len(x) > 0)\
                                .map(extract_information)\
                                .to_pandas()
 
-additional_information['statement_date'] = pd.to_datetime(additional_information['statement_date'])
-additional_information.head()
+statements['statement_date'] = pd.to_datetime(statements['statement_date'])
+statements.head()
 
 # <codecell>
 
-additional_information.shape
+statements.shape
 
 # <codecell>
 
@@ -126,7 +116,59 @@ def label_to_nb(l):
 
 # <codecell>
 
-lies = additional_information
+print('The number of different context names is: {}.\
+ That is much too many different contexts and lots of them appear only a few times.\
+ We thus need to regroup/reduce the number of contexts.'.format(group_and_count(statements, 'context').shape[0]))
+
+# <codecell>
+
+group_and_count(statements, 'context').head(100)
+
+# <markdowncell>
+
+# So how to regroup all these or part of these?
+# We can use the mean of communication for example:
+# radio/tv/facebook/twitter/internet
+# and these classes can have overlap...
+
+# <codecell>
+
+statements['clean_context'] = statements['context'].apply(SH.clean_up_context)
+
+# <codecell>
+
+
+
+# <codecell>
+
+group_and_count(statements[statements['clean_context'] == 'others'], 'context')
+
+# <codecell>
+
+statements['clean_context'].eq('others').mean()
+
+# <codecell>
+
+group_and_count(statements, 'clean_context')
+
+# <codecell>
+
+# In search for empty contexts
+lies.loc[lies['context']=='']
+
+# <codecell>
+
+# What are the other contexts about
+lies.loc[lies['clean_context']=='others']
+# We need to consider also column called statement_type_description
+
+# <codecell>
+
+
+
+# <codecell>
+
+
 
 # <codecell>
 
