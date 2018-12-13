@@ -48,7 +48,9 @@ from utils import file, logging
 from utils.statement_handling import extract_information, safe_json_read
 
 from importlib import reload
+import seaborn as sns
 
+%matplotlib inline
 import utils.statement_handling as SH
 reload(SH)
 
@@ -116,7 +118,7 @@ statements['clean_context'] = statements['context'].apply(SH.clean_up_context)
 # <codecell>
 
 # no longer necessary
-if false:
+if False:
     df['label_as_nb'] = df['label'].apply(label_to_nb) * 2 
     df['statement_id'] = pd.to_numeric(df['statement_id'])
     lies = df.merge(additional_information, on='statement_id', how='left')
@@ -257,6 +259,87 @@ election_results[idx_multiple_election_results].head()
 
 # yeah ... let's see how many we can join. the one letter endings might be a problem
 election_results['CANDIDATE NAME'].value_counts()
+
+# <codecell>
+
+
+
+# <codecell>
+
+
+
+# <codecell>
+
+# new stuff
+
+# <codecell>
+
+statements.columns
+
+# <codecell>
+
+data = statements['statement_date']
+sns.distplot(data)
+
+# <codecell>
+
+statements.dtypes
+
+# <codecell>
+
+statements['statement_month'] = statements['statement_date'].dt.year * 100 + statements['statement_date'].dt.month
+
+# <codecell>
+
+
+
+# <codecell>
+
+import matplotlib.pyplot as plt
+
+sns.distplot(statements.loc[statements['statement_month'] > 201000, 'statement_month'], kde=False)
+sns.distplot(statements.loc[(statements['statement_month'] > 201000) & statements['label'].isin(['false', 'pants-fire']), 'statement_month'], kde=False)
+
+
+election_dates['month'] = election_dates['Date'].dt.year * 100 + election_dates['Date'].dt.month
+
+for election_day in election_dates.loc[election_dates['month'] > 201000, 'month']:
+    plt.axvline(election_day)
+
+# <codecell>
+
+election_dates = pd.read_csv('../data/usa_election_dates.csv')
+election_dates['Date'] = pd.to_datetime(election_dates['Date'])
+
+election_dates
+
+# <codecell>
+
+
+
+# <codecell>
+
+
+
+# <codecell>
+
+
+
+# <codecell>
+
+
+
+# <codecell>
+
+
+
+# <codecell>
+
+
+
+# <codecell>
+
+
 
 # <codecell>
 
