@@ -203,10 +203,6 @@ def add_ending(f):
 
 election_files = [(add_ending(f'{directory_election_results}/federalelections{year}.xls'), year) for year in [2014, 2016]]
 
-# <markdowncell>
-
-# Now, let's prepare some data for viewing:
-
 # <codecell>
 
 election_results_cols_of_interest = ['CANDIDATE NAME', 'PRIMARY VOTES', 'PRIMARY %', 'STATE']
@@ -232,10 +228,14 @@ def prep_election_results(df, year, type_):
 
 # <codecell>
 
-def combine_first(df, columns, target_column_name):
+def combine_first(df, columns, target_column_name, drop_cols=False):
+    df = df.copy()
     df[target_column_name] = df[columns[0]]
     for c in columns[1:]:
         df[target_column_name] = df[target_column_name].combine_first(df[c])
+        
+    if drop_cols:
+        df = df.drop(columns=columns)
         
     return df
 
@@ -254,7 +254,14 @@ election_results = [prep_election_results(pd.read_excel(f, sheet_name=f'{year} U
 election_results += [prep_election_results(pd.read_excel(f'{directory_election_results}/federalelections2012.xls', sheet_name=f'2012 US House & Senate Resuts'), 2012, 'all')]
 election_results = reduce(lambda acc, el: pd.merge(acc, el, on='candidate_name', how='outer'), election_results)
 
+election_results = election_results.loc[election_results['primary_votes_all_2012'].ne('Convention') & election_results['primary_votes_all_2012_pct'].ne('Convention'), :] # No clue what they mean by that, but we don't have any other data for these guys anyway
+
 election_results = handle_states(election_results)
+
+# Converting pct fields to numbers
+for c in election_results.columns:
+    if c.startswith('primary') and c.endswith('pct'):
+        election_results[c] = pd.to_numeric(election_results[c])
 
 # <markdowncell>
 
@@ -287,6 +294,10 @@ election_results[idx_multiple_election_results].head()
 
 # <markdowncell>
 
+# # Influence of statements on election results
+
+# <markdowncell>
+
 # ## joining statements and election results
 
 # <codecell>
@@ -294,11 +305,130 @@ election_results[idx_multiple_election_results].head()
 # we join on last names and state
 election_results[['candidate_last_name',  'candidate_first_name', 'candidate_name_misc']] = election_results['candidate_name'].str.split(', ', expand=True)
 
-statements_with_elections =  statements.merge(election_results, left_on=['speaker_last_name', 'speaker_home_state'], right_on=['candidate_last_name', 'state'])
+t = election_results.loc[idx_multiple_election_results, ['state'] + [c for c in election_results.columns if c.endswith('pct') or c.startswith('candidate') and not c.endswith('misc')]]
+statements_with_elections =  statements.merge(t, left_on=['speaker_last_name', 'speaker_home_state'], right_on=['candidate_last_name', 'state'])
+
+# <markdowncell>
+
+# ## Simpliyfing the label
+
+# <codecell>
+
+labels_of_interest = ['false',
+                      'mostly-true',
+                      'half-true',
+                      'barely-true',
+                      'true',
+                      'pants-fire',
+                      #'full-flop',
+                      #'half-flip',
+                      #'no-flip',
+                     ]
+
+statements_with_elections = statements_with_elections.loc[statements_with_elections['label'].isin(labels_of_interest), :]
+
+def simplify_label(l):
+    if l in ['pants-fire', 'false']:
+        return 'false'
+    else:
+        return 'true'
+
+
+statements_with_elections['simple_label'] = statements_with_elections['label'].apply(simplify_label)
+
+# <codecell>
+
+def simplify_votes(df):
+    df = df.copy()
+    for y in [2014, 2016]:
+        cols = [c for c in df.columns if str(y) in c]
+        df = combine_first(df, cols, f'primary_votes_{y}', drop_cols=True)
+        
+    return df.rename(columns={'primary_votes_all_2012_pct': 'primary_votes_2012'})
+
+# <codecell>
+
+statements_with_elections = simplify_votes(statements_with_elections)
+
+# <markdowncell>
+
+# ## Counting lies in between elections
+
+# <markdowncell>
+
+# - we know for each candidate the election date -> sum statements between these dates -> compare with votes
+# - 
+
+# <codecell>
+
+statements_with_elections
+
+# <codecell>
+
+periods = [(201011, 201211), (201211, 201411), (201411, 201611)]
+
+def agg_for_years(statements, ys):
+    statements = statements.loc[statements['statement_month'].lt(ys[1]) & statements['statement_month'].gt(ys[0])]
+    statements['simple_label'] = statements['label'].apply(simplify_label)
+
+    return statements.groupby(['speaker_last_name', 'speaker_home_state', 'simple_label']).size().reset_index(name='count_{0}_{1}'.format(str(ys[0])[:4], str(ys[1])[:4]))
+
+
+
+simple_votes_2012_2014 = simple_votes.loc[simple_votes['primary_votes_2012'].notnull() & simple_votes['primary_votes_2014'].notnull()]
+
+statements_with_elections_2012_2014 =  simple_votes_2012_2014.merge(agg_for_years(statements, periods[0]), right_on=['speaker_last_name', 'speaker_home_state'], left_on=['candidate_last_name', 'state'])\
+    .merge(agg_for_years(statements, periods[1]), on=['speaker_last_name', 'speaker_home_state', 'simple_label'])
+
+statements_with_elections_2012_2014['statement_ratio_true_false_2010'] = statements_with_elections_2012_2014['count_2010_2012'] 
+
+simple_votes_2014_2016 = simple_votes.loc[simple_votes['primary_votes_2014'].notnull() & simple_votes['primary_votes_2016'].notnull()]
+
+statements_with_elections_2014_2016 =  simple_votes_2014_2016.merge(agg_for_years(statements, periods[1]), right_on=['speaker_last_name', 'speaker_home_state'], left_on=['candidate_last_name', 'state'])\
+    .merge(agg_for_years(statements, periods[2]), on=['speaker_last_name', 'speaker_home_state', 'simple_label'])
+
+# <codecell>
+
+import numpy as np
+
+def ratio_for_period(statements, period):
+    _t = agg_for_years(statements, period)
+
+    # TODO adapt values based on period
+    # we are only interested in the impact of lies -> drop the rows for which we don't have any lies
+    _t = pd.pivot_table(_t, index=['speaker_last_name', 'speaker_home_state'], values='count_2010_2012', columns='simple_label', ).reset_index()
+    _t = _t.loc[_t['false'].notnull()]
+    _t['ratio'] = np.inf
+    _h = _t['true'].notnull()
+    _t.loc[_t['true'].notnull(), 'ratio'] = _t.loc[_h, 'false'] / _t.loc[_h, 'true']
+    return _t[['ratio', 'speaker_last_name', 'speaker_home_state']].rename(columns={'ratio': 'ratio_2010_2012'})
 
 # <codecell>
 
 
+
+# <codecell>
+
+coi_p1 = ['state', 'candidate_name', 'primary_votes_2012', 'primary_votes_2014', 'simple_label', 'count_2010_2012', 'count_2012_2014']
+coi_p2 = ['state', 'candidate_name', 'primary_votes_2016', 'simple_label', 'count_2014_2016']
+
+combined = statements_with_elections_2012_2014.loc[:, coi_p1].merge(statements_with_elections_2014_2016.loc[:, coi_p2], on=['state', 'candidate_name', 'simple_label'], how='outer')
+
+# <codecell>
+
+combined.loc[:, sorted(combined.columns)]
+
+# <codecell>
+
+
+
+# <codecell>
+
+
+
+# <codecell>
+
+## 
 
 # <codecell>
 
@@ -307,11 +437,6 @@ statements_with_elections =  statements.merge(election_results, left_on=['speake
 # <codecell>
 
 statements.columns
-
-# <codecell>
-
-data = statements['statement_date']
-sns.distplot(data)
 
 # <codecell>
 
