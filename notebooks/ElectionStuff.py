@@ -3,7 +3,7 @@
 
 # <markdowncell>
 
-# # Analysing Dataset
+# # Imports & General stuff
 
 # <codecell>
 
@@ -74,11 +74,7 @@ directory_county_data = "../data/county_data"
 
 # <markdowncell>
 
-# # LIAR Dataset
-
-# <markdowncell>
-
-# This is just the LIAR dataset:
+# # Statements
 
 # <codecell>
 
@@ -176,7 +172,7 @@ pandas_profiling.ProfileReport(lies)
 
 # <markdowncell>
 
-# We have another dataset that we will explore and merge to our LIAR dataset in order to get some more insight into data. This one is regarding election results.
+# ## Loading
 
 # <codecell>
 
@@ -187,8 +183,6 @@ pd.options.display.max_columns = 300
 
 from itertools import product
 from functools import reduce
-
-# <codecell>
 
 def add_ending(f):
     """ File ending depending on a year
@@ -215,14 +209,18 @@ election_files = [(add_ending(f'{directory_election_results}/federalelections{ye
 
 # <codecell>
 
-election_results_cols_of_interest = ['CANDIDATE NAME', 'PRIMARY VOTES', 'PRIMARY %']
+election_results_cols_of_interest = ['CANDIDATE NAME', 'PRIMARY VOTES', 'PRIMARY %', 'STATE']
 
 def fix_columns_election_results(df, year, type_):
     """we are only interested in the primary votes, since these reflect the opinion the most"""
-    df = df.loc[:, election_results_cols_of_interest]
-    df[f'primary_votes_{type_.lower()}_{year}'] = df['PRIMARY VOTES']
-    df[f'primary_votes_{type_.lower()}_{year}_pct'] = df['PRIMARY %']
-    return df.drop(columns=['PRIMARY VOTES', 'PRIMARY %'])
+    #print(df.columns)
+    df = df.loc[:, election_results_cols_of_interest].rename(columns={
+        'CANDIDATE NAME': 'candidate_name',
+        'PRIMARY VOTES': f'primary_votes_{type_.lower()}_{year}',
+        'PRIMARY %': f'primary_votes_{type_.lower()}_{year}_pct',
+        'STATE': f'state_{type_.lower()}_{year}'})
+              
+    return df
 
 
 def get_only_voting_results(df):
@@ -234,12 +232,44 @@ def prep_election_results(df, year, type_):
 
 # <codecell>
 
+def combine_first(df, columns, target_column_name):
+    df[target_column_name] = df[columns[0]]
+    for c in columns[1:]:
+        df[target_column_name] = df[target_column_name].combine_first(df[c])
+        
+    return df
+
+# <codecell>
+
+def handle_states(df):
+    df = combine_first(df, [c for c in df.columns if 'state' in c], 'state')
+    return df.drop(columns=[c for c in df.columns if 'state' in c and c != 'state'])
+
+# <codecell>
+
 election_results = [prep_election_results(pd.read_excel(f, sheet_name=f'{year} US {type_} Results by State'), year, type_) for (f, year), type_ in product(election_files, ['Senate', 'House'])]
 
 # we let the results as they are, merge, and then check if the person is a senator or a member of the house based on the other results
 # yes they did a spelling mistake
 election_results += [prep_election_results(pd.read_excel(f'{directory_election_results}/federalelections2012.xls', sheet_name=f'2012 US House & Senate Resuts'), 2012, 'all')]
-election_results = reduce(lambda acc, el: pd.merge(acc, el, on='CANDIDATE NAME', how='outer'), election_results)
+election_results = reduce(lambda acc, el: pd.merge(acc, el, on='candidate_name', how='outer'), election_results)
+
+election_results = handle_states(election_results)
+
+# <markdowncell>
+
+# ## Number of useful politicians / election results
+
+# <markdowncell>
+
+# **Comments**
+# 
+# - currently only politicians which participated in at least two elections are considered "interesting"
+# 
+# 
+# **TODO**
+# 
+# - for the politician for which we have data for a prior election, find out why they are no longer part of it
 
 # <codecell>
 
@@ -255,14 +285,16 @@ print(f"we have multple election results for {idx_multiple_election_results.sum(
 
 election_results[idx_multiple_election_results].head()
 
+# <markdowncell>
+
+# ## joining statements and election results
+
 # <codecell>
 
-# yeah ... let's see how many we can join. the one letter endings might be a problem
-election_results['CANDIDATE NAME'].value_counts()
+# we join on last names and state
+election_results[['candidate_last_name',  'candidate_first_name', 'candidate_name_misc']] = election_results['candidate_name'].str.split(', ', expand=True)
 
-# <codecell>
-
-
+statements_with_elections =  statements.merge(election_results, left_on=['speaker_last_name', 'speaker_home_state'], right_on=['candidate_last_name', 'state'])
 
 # <codecell>
 
@@ -288,10 +320,6 @@ statements.dtypes
 # <codecell>
 
 statements['statement_month'] = statements['statement_date'].dt.year * 100 + statements['statement_date'].dt.month
-
-# <codecell>
-
-
 
 # <codecell>
 
