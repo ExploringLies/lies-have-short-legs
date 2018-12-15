@@ -447,10 +447,6 @@ statements[(statements['speaker_first_name'].isnull() | statements['speaker_firs
 
 # <codecell>
 
-group_and_count(statements, 'author_name_slug', with_pct=True)
-
-# <codecell>
-
 ## 
 
 # <codecell>
