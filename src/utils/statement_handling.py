@@ -104,7 +104,7 @@ def clean_up_context(c):
     elif 'facebook' in c.lower():
         return 'facebook'
     # TODO rene check this again... this is too vague
-    elif any([s in c for s in ['television', 'tv', 'broadcast', 'press', 'cnn', 'radio', 'appearance', 'an episode', 'this week', 'on cbs']]):
+    elif any([s in c for s in ['television', 'tv', 'broadcast', 'press', 'fox', 'cnn', 'radio', 'appearance', 'an episode', 'this week', 'on cbs']]):
         return 'tv'
     elif 'campaign' in c.lower():
         return 'campaign'
@@ -112,8 +112,6 @@ def clean_up_context(c):
         return 'blog'
     elif 'conference' in c.lower():
         return 'conference'
-    elif 'fox' in c.lower():
-        return 'fox'
     elif any([s in c for s in ['an ad', 'a web ad', 'tv ad', 'an attack ad', 'political ad', 'online ad', 'digital ad', 'billboard']]):
         return 'ad'
     elif any([s in c for s in ['article', 'op-ed', 'headline', 'newspaper', 'newsletter', 'column', 'news story', 'opinion piece', 'book', 'editorial', 'news report']]):
