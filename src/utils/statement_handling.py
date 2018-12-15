@@ -54,7 +54,8 @@ def extract_information(res):
                 'speaker_first_name': res['speaker']['first_name'],
                 'speaker_last_name': res['speaker']['last_name'],
                 'speaker_home_state': res['speaker']['home_state'],
-                'statement_id': res['id']
+                'statement_id': res['id'],
+                'subject': res['subject'][0]['subject']
                }
     except KeyError:
         logging.error(f"problem with id {res.get('statement_id', 'NO ID')}")
