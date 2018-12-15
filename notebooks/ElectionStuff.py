@@ -389,30 +389,49 @@ statements_with_elections_2014_2016 =  simple_votes_2014_2016.merge(agg_for_year
 
 # <codecell>
 
-import numpy as np
-
-def ratio_for_period(statements, period):
-    _t = agg_for_years(statements, period)
-
-    # TODO adapt values based on period
-    # we are only interested in the impact of lies -> drop the rows for which we don't have any lies
-    _t = pd.pivot_table(_t, index=['speaker_last_name', 'speaker_home_state'], values='count_2010_2012', columns='simple_label', ).reset_index()
-    _t = _t.loc[_t['false'].notnull()]
-    _t['ratio'] = np.inf
-    _h = _t['true'].notnull()
-    _t.loc[_t['true'].notnull(), 'ratio'] = _t.loc[_h, 'false'] / _t.loc[_h, 'true']
-    return _t[['ratio', 'speaker_last_name', 'speaker_home_state']].rename(columns={'ratio': 'ratio_2010_2012'})
+periods
 
 # <codecell>
 
+import numpy as np
 
+def _period_year_(period):
+    return [str(p)[:4] for p in period]
+
+def ratio_for_period(statements, period):
+    """Calculates the ratio between false and true statements for the given period (defined as a tuple of two "year-months").
+    If no true statements exists the ratio will be `np.inf`.
+    
+    Example:
+    
+    >>> ratio_for_period(statements, (201011, 201211))
+    """
+    _t = agg_for_years(statements, period)
+
+    _t = pd.pivot_table(_t, index=['speaker_last_name', 'speaker_home_state'], values='count_{0}_{1}'.format(*_period_year_(period)), columns='simple_label', ).reset_index()
+    _t = _t.loc[_t['false'].notnull()] # we are only interested in the impact of lies -> drop the rows for which we don't have any lies
+    _t['ratio'] = np.inf # 
+    _h = _t['true'].notnull()
+    _t.loc[_t['true'].notnull(), 'ratio'] = _t.loc[_h, 'false'] / _t.loc[_h, 'true']
+    return _t[['ratio', 'speaker_last_name', 'speaker_home_state']].rename(columns={'ratio': 'ratio_{0}_{1}'.format(*_period_year_(period))})
+
+# <codecell>
+
+true_false_ratios = reduce(lambda acc, el: acc.merge(el, on=['speaker_last_name', 'speaker_home_state'], how='outer'), [ratio_for_period(statements, p) for p in periods])
 
 # <codecell>
 
 coi_p1 = ['state', 'candidate_name', 'primary_votes_2012', 'primary_votes_2014', 'simple_label', 'count_2010_2012', 'count_2012_2014']
-coi_p2 = ['state', 'candidate_name', 'primary_votes_2016', 'simple_label', 'count_2014_2016']
+coi_p2 = ['state', 'candidate_name', 'primary_votes_2016', 'simple_label', 'count_2014_2016'] + ['speaker_last_name', 'speaker_home_state']
 
 combined = statements_with_elections_2012_2014.loc[:, coi_p1].merge(statements_with_elections_2014_2016.loc[:, coi_p2], on=['state', 'candidate_name', 'simple_label'], how='outer')
+
+# <codecell>
+
+_t = combined.drop_duplicates(subset=['state', 'candidate_name']).drop(columns=['simple_label'])
+
+# not very many people left... 7! but the primary votes for 2016 are missing
+_t.loc[:, coi_p1 + ['speaker_last_name', 'speaker_home_state']].merge(true_false_ratios, on=['speaker_last_name', 'speaker_home_state'])
 
 # <codecell>
 
@@ -420,11 +439,15 @@ combined.loc[:, sorted(combined.columns)]
 
 # <codecell>
 
-
+statements
 
 # <codecell>
 
+statements[(statements['speaker_first_name'].isnull() | statements['speaker_first_name'].str.strip().eq('')) == False][:1].values
 
+# <codecell>
+
+group_and_count(statements, 'author_name_slug', with_pct=True)
 
 # <codecell>
 
