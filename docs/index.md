@@ -3,8 +3,9 @@ title: Lies have short legs
 ---
 
 <style>
-img {
+a > img {
   margin: 0 auto;
+  display: block;
 }
 </style>
 
