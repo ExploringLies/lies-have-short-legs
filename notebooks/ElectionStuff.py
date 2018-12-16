@@ -90,16 +90,6 @@ statements.head()
 
 statements.shape
 
-# <codecell>
-
-print('The number of different context names is: {}.\
- That is much too many different contexts and lots of them appear only a few times.\
- We thus need to regroup/reduce the number of contexts.'.format(group_and_count(statements, 'context').shape[0]))
-
-# <codecell>
-
-group_and_count(statements, 'context').head(100)
-
 # <markdowncell>
 
 # So how to regroup all these or part of these?
@@ -113,58 +103,17 @@ statements['clean_context'] = statements['context'].apply(SH.clean_up_context)
 
 # <codecell>
 
-# no longer necessary
-if False:
-    df['label_as_nb'] = df['label'].apply(label_to_nb) * 2 
-    df['statement_id'] = pd.to_numeric(df['statement_id'])
-    lies = df.merge(additional_information, on='statement_id', how='left')
-
-# <markdowncell>
-
-# Let's just see what we have here:
-
-# <codecell>
-
-# TODO rene add new values, see trello board
-lies['label_to_nb'] = lies['label'].apply(label_to_nb) * 2
-
-# <codecell>
-
-lies['label'].value_counts()
-
-# <codecell>
-
 def _count_for_last_name_(df, last_name):
-    return group_and_count(lies.loc[lies['speaker_last_name'].str.contains(last_name, flags=re.IGNORECASE), :], 'label', with_pct=True)\
+    return group_and_count(df.loc[df['speaker_last_name'].str.contains(last_name, flags=re.IGNORECASE), :], 'label', with_pct=True)\
             .rename(columns={'count': f'count_{last_name}', 'count_pct': f'count_pct{last_name}'})
 
 # <codecell>
 
-pd.merge(_count_for_last_name_(lies, 'obama'), _count_for_last_name_(lies, 'trump'), on='label')
-
-# <markdowncell>
-
-# Here we can see that Barack Obama had 549 statements labeled with _pants on fire_.
+pd.merge(_count_for_last_name_(statements, 'obama'), _count_for_last_name_(statements, 'trump'), on='label')
 
 # <codecell>
 
-lies[lies['speakers_job_title'].str.contains('County') == True].shape
-
-# <codecell>
-
-lies['statement_date'].describe()
-
-# <markdowncell>
-
-# Above, we can see that statements range from 1995 to 2016.
-
-# <markdowncell>
-
-# Now, let's do some profiling to get some more insights:
-
-# <codecell>
-
-pandas_profiling.ProfileReport(lies)
+statements['statement_date'].describe()
 
 # <markdowncell>
 
@@ -365,7 +314,7 @@ statements_with_elections
 
 # <codecell>
 
-periods = [(201011, 201211), (201211, 201411), (201411, 201611)]
+periods = [(201011, 201211), (201211, 201411), (201411, 201611), (200811, 201211), (201211, 201611)]
 
 def agg_for_years(statements, ys):
     statements = statements.loc[statements['statement_month'].lt(ys[1]) & statements['statement_month'].gt(ys[0])]
@@ -376,20 +325,24 @@ def agg_for_years(statements, ys):
 
 
 simple_votes_2012_2014 = simple_votes.loc[simple_votes['primary_votes_2012'].notnull() & simple_votes['primary_votes_2014'].notnull()]
-
 statements_with_elections_2012_2014 =  simple_votes_2012_2014.merge(agg_for_years(statements, periods[0]), right_on=['speaker_last_name', 'speaker_home_state'], left_on=['candidate_last_name', 'state'])\
     .merge(agg_for_years(statements, periods[1]), on=['speaker_last_name', 'speaker_home_state', 'simple_label'])
 
-statements_with_elections_2012_2014['statement_ratio_true_false_2010'] = statements_with_elections_2012_2014['count_2010_2012'] 
-
 simple_votes_2014_2016 = simple_votes.loc[simple_votes['primary_votes_2014'].notnull() & simple_votes['primary_votes_2016'].notnull()]
-
 statements_with_elections_2014_2016 =  simple_votes_2014_2016.merge(agg_for_years(statements, periods[1]), right_on=['speaker_last_name', 'speaker_home_state'], left_on=['candidate_last_name', 'state'])\
     .merge(agg_for_years(statements, periods[2]), on=['speaker_last_name', 'speaker_home_state', 'simple_label'])
 
-# <codecell>
+simple_votes_2012_2016 = simple_votes.loc[simple_votes['primary_votes_2012'].notnull() & simple_votes['primary_votes_2016'].notnull()]
+statements_with_elections_2012_2016 =  simple_votes_2012_2016.merge(agg_for_years(statements, (200811, 201211)), right_on=['speaker_last_name', 'speaker_home_state'], left_on=['candidate_last_name', 'state'])\
+    .merge(agg_for_years(statements, (201211, 201611)), on=['speaker_last_name', 'speaker_home_state', 'simple_label'])
 
-periods
+coi_p1 = ['state', 'candidate_name', 'primary_votes_2012', 'primary_votes_2014', 'simple_label', 'count_2010_2012', 'count_2012_2014']
+coi_p2 = ['state', 'candidate_name', 'primary_votes_2016', 'simple_label', 'count_2014_2016'] + ['speaker_last_name', 'speaker_home_state']
+coi_p3 = ['state', 'candidate_name', 'simple_label', 'count_2008_2012', 'count_2012_2016']
+
+combined = statements_with_elections_2012_2014.loc[:, coi_p1]\
+    .merge(statements_with_elections_2014_2016.loc[:, coi_p2], on=['state', 'candidate_name', 'simple_label'], how='outer')\
+    .merge(statements_with_elections_2012_2016.loc[:, coi_p3], on=['state', 'candidate_name', 'simple_label'], how='outer')
 
 # <codecell>
 
@@ -421,17 +374,18 @@ true_false_ratios = reduce(lambda acc, el: acc.merge(el, on=['speaker_last_name'
 
 # <codecell>
 
-coi_p1 = ['state', 'candidate_name', 'primary_votes_2012', 'primary_votes_2014', 'simple_label', 'count_2010_2012', 'count_2012_2014']
-coi_p2 = ['state', 'candidate_name', 'primary_votes_2016', 'simple_label', 'count_2014_2016'] + ['speaker_last_name', 'speaker_home_state']
-
-combined = statements_with_elections_2012_2014.loc[:, coi_p1].merge(statements_with_elections_2014_2016.loc[:, coi_p2], on=['state', 'candidate_name', 'simple_label'], how='outer')
+_t[:3]
 
 # <codecell>
 
 _t = combined.drop_duplicates(subset=['state', 'candidate_name']).drop(columns=['simple_label'])
 
 # not very many people left... 7! but the primary votes for 2016 are missing
-_t.loc[:, coi_p1 + ['speaker_last_name', 'speaker_home_state']].merge(true_false_ratios, on=['speaker_last_name', 'speaker_home_state'])
+_t = _t.merge(true_false_ratios, on=['speaker_last_name', 'speaker_home_state'], how='outer')
+for l, r in [(2012, 2014), (2014, 2016), (2012, 2016)]:
+    _t[f'diff_votes_{l}_{r}'] = _t[f'primary_votes_{l}'] - _t[f'primary_votes_{r}']
+    #_t[f'diff_ratio_{l}_{r}'] = _t[f'ratio_2010_2012'] - _t['ratio_2012_2014']
+_t.loc[(_t['diff_votes_2012_2014'].notnull() | _t['diff_votes_2012_2016'].notnull() | _t['diff_votes_2014_2016'].notnull()), sorted(_t.columns)]
 
 # <codecell>
 
