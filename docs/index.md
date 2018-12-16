@@ -2,6 +2,12 @@
 title: Lies have short legs
 ---
 
+<style>
+img {
+  margin: 0 auto;
+}
+</style>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
@@ -57,10 +63,6 @@ labels seem to follow a normal distribution with a centre around `half-true`.
 The distribution of labels over the years reflects the general amount of data for these years. **TODO check this with a better plot**
 
 ## When were these statements made?
-
-
-<a data-fancybox="gallery" href="images/timeline_plot.png"><img src="images/timeline_plot.png"></a>
-
 
 <a data-fancybox="gallery" href="images/ratio_false_true_parties.png"><img src="images/ratio_false_true_parties.png"></a>
 
@@ -333,3 +335,15 @@ For these politicians we observed only one period in which an increase in the
 false-true-ratio had a negative effect.
 
 <a data-fancybox="gallery" href="images/difference_false_true_ratio_to_election_results.png"><img src="images/difference_false_true_ratio_to_election_results.png"></a>
+
+## Conclusion
+
+We observe a fairly constant lying over the years, with some differences in
+when, who and where people lie. In a further work we would like to research in
+which context lies are made more often. Do people lie more on Twitter or on TV?
+A similar question could be asked about the position of the person: Do house
+representatives lie more or less than senators. We estimate that the number of
+statements for politicians who will be judged will increase, including the 2018
+elections should therefore yield interesting results.
+
+Estimating the bias of the dataset is a tricky question and should be researched with greater.
