@@ -224,9 +224,53 @@ author_label_counts = group_and_count(a, ['author_name_slug', 'simple_label', 'p
 
 # <codecell>
 
+pd.pivot_table(a.loc[a.party.eq('Republican')], values=['label_count'], columns=['simple_label'], index='author_name_slug').reset_index()[:10]
+
+# <codecell>
+
+_t = group_and_count(statements, 'author_name_slug', with_pct=True)
+_t['pct_sum'] = np.cumsum(group_and_count(statements, 'author_name_slug', with_pct=True)['count_pct'])
+(_t['pct_sum'] < 0.8).sum()
+
+# <codecell>
+
 a = author_counts.merge(author_label_counts, on='author_name_slug')
-a['pct'] = a['label_count'] / a['total_count']
-a
+#a['pct'] = a['label_count'] / a['total_count']
+def _ratio_(df, party):
+    df = df.fillna(0)
+    df[f'ratio_{party}'] = df[f'false_count_{party}'] / df[f'true_count_{party}']
+    return df
+
+a = pd.merge(*[_ratio_(pd.DataFrame(pd.pivot_table(a.loc[a.party.eq(party)], 
+                                values=['label_count'],
+                                columns=['simple_label'],
+                                index='author_name_slug').reset_index().values, 
+                 columns=['author', f'false_count_{party}', f'true_count_{party}']), party) for party in parties_of_interest], on='author')[['author', 'ratio_Republican', 'ratio_Democrat']]
+
+a = a.loc[a.ratio_Democrat.lt(a.ratio_Democrat.quantile(0.9)) & a.ratio_Republican.lt(a.ratio_Republican.quantile(0.9)), :]
+
+sns.lmplot(data=a, x='ratio_Republican', y='ratio_Democrat')
+plt.title('Ratio comparision between Republican and Democrat rulings on author basis')
+plt.xlabel('Ratio false-true statements for Republicans')
+plt.ylabel('Ratio false-true statements for Democrats')
+plt.savefig('../docs/images/ratio_comparision_author_basis.png')
+
+# <codecell>
+
+a.mean()
+
+# <codecell>
+
+
+
+# <codecell>
+
+len([pd.DataFrame(pd.pivot_table(a.loc[a.party.eq(party)], 
+                                values=['label_count'],
+                                columns=['simple_label'],
+                                index='author_name_slug').reset_index().values, 
+                 columns=['author', f'false_count_{party}', f'true_count_{party}'])
+        for party in parties_of_interest])
 
 # <codecell>
 

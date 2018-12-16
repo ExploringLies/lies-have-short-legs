@@ -58,7 +58,7 @@ The distribution of labels over the years is reflects the general amount of data
 
 
 ![timeline_plot](/images/timeline_plot.png)
-![ratio_false_true_parties](ratio_false_true_parties.png)
+![ratio_false_true_parties](/images/ratio_false_true_parties.png)
 
 We observe that the ratio of false-to-true statements for democrats goes slightly downwards, but for Republicans the ratio is on a steep climb.
 
@@ -111,7 +111,21 @@ PolitiFact [started in
 and describes itself as a "not-for-profit" organisation and is [owned by](https://www.politifact.com/truth-o-meter/article/2018/feb/12/principles-truth-o-meter-politifacts-methodology-i/#Our%20ownership) the [Poynter Institute for Media Studies](https://www.poynter.org/), but relies primarily on the financial support from the [Tampa Bay Times](http://www.tampabay.com/).
 Donations exceeding $1'000 are [publicly listed](https://www.politifact.com/truth-o-meter/blog/2011/oct/06/who-pays-for-politifact/). Around one third of the statements were [suggested by readers](https://www.politifact.com/truth-o-meter/article/2018/feb/12/principles-truth-o-meter-politifacts-methodology-i/).
 
+In order to evaluate a possible bias better we looked at the rulings of each
+journalist. In total 368 journalists made judged statements, 43 of those made
+up 80% of all rulings.  Looking at how these journalists rule based on the
+ratio between false and true statements we observed a significant difference:
+60.1% for Republicans and 16.8% for Democrats, meaning that Republicans had a
+much higher likelihood to be judged to lie. We again stress the point, that
+this is does not necessarily indicate a potential bias, as we lack ground
+truth.
 
+![ratio_comparision_author_basis](ratio_comparision_author_basis.png)
+
+The ratio is however very drastic and underlines more the selection bias of
+statements, the statements were probably not randomly selected. Instead the
+selection is biased towards what the organisation deemed to be newsworthy. The
+ratio of lies could therefore lie much lower.
 
 ## Number of lies per speaker
   
