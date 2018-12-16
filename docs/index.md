@@ -165,6 +165,7 @@ People are not equal when we consider the number of statements recorded and asse
 
 <a data-fancybox="gallery" href="images/statement_years_count.png"><img src="images/statement_years_count.png"></a>
 **TODO:**
+Variations of number of lies is visible across the years. At the beginning of politifact lies are the rarest with 250 lies in 2007. This also corresponds to a lower total number of statements. Moreover, 2 peaks can be observed. The first one occurs in 2012 with 2000 lies and the second one occurs in 2016 with 1800 lies. Both peaks correspond to U.S. presidential elections when politics are at their peak of activity.
 
 ## Who are the biggest liars (people/groups/context)
 **TODO:**
