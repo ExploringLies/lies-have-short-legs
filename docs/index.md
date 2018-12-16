@@ -173,7 +173,8 @@ Let's also see it normalized:
 
 <a data-fancybox="gallery" href="images/statement_years_count_percentage_norm.png"><img src="images/statement_years_count_percentage_norm.png"></a>
 
-#### Answer: The top Lie year was 2012, and the Top Truth year was 2007!
+**Answer: The top Lie year was 2012, and the Top Truth year was 2007!**
+
 
 ### Top lying month is ...
 Let's find out during which months the number of false statements is the biggest. False statements include statements that are _false_, _pants-fire_, and _barely_true_.
@@ -204,7 +205,9 @@ On the other hand, the biggest number of positive/true statements is given durin
 
 It is interesting to see that there is no time where truth leads the game. The number of negative/false statements is always at least 50% or above.
 
-#### Answer: The top Lie month is October, and the Top Truth month is January!
+**Answer: The top Lie month is October, and the Top Truth month is January!**
+
+
 
 ### Top lying week-day is ...
 Let's see during which week day we should not believe polititian's statements.
@@ -227,7 +230,9 @@ and normalized plot:
 
 These two plots show summed negative statements (_false_, _pants-fire_, _barely_true) and we can see that the biggest number of false statements is on Tuesday, however the proportionally bigger number of false statements is given on Wednesday, around **58.18 %**. In addition, we can see that during Saturday there is the least number of false statements, but also the proportion of false statements is smallest, around **54.42 %**.
 
-#### Answer: The top Lie week-day is Wednesday, and the Top Truth week-day is Saturday!
+**Answer: The top Lie week-day is Wednesday, and the Top Truth week-day is Saturday!**
+
+
 
 
 ## Lying cantons?
