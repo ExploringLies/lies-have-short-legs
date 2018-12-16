@@ -16,4 +16,4 @@ more stuff...
 
 
 
-[sample](/images/sample_fig.png)
+![sample](/images/sample_fig.png)
