@@ -109,7 +109,7 @@ vs 21%). Both parties have roughly the same amount of true statements (3255 and
 PolitiFact [started in
 2007](https://www.politifact.com/truth-o-meter/article/2018/feb/12/principles-truth-o-meter-politifacts-methodology-i/)
 and describes itself as a "not-for-profit" organisation and is [owned by](https://www.politifact.com/truth-o-meter/article/2018/feb/12/principles-truth-o-meter-politifacts-methodology-i/#Our%20ownership) the [Poynter Institute for Media Studies](https://www.poynter.org/), but relies primarily on the financial support from the [Tampa Bay Times](http://www.tampabay.com/).
-Donations exceeding $1'000 are [publicly listed](https://www.politifact.com/truth-o-meter/blog/2011/oct/06/who-pays-for-politifact/). Around one third of the statements were [suggested by readers](https://www.politifact.com/truth-o-meter/article/2018/feb/12/principles-truth-o-meter-politifacts-methodology-i/). [PolitiFact won the Pulitzer Price for National Reporting in 2009](https://web.archive.org/web/20090919173210/http://www.pulitzer.org/citation/2009-National-Reporting)
+Donations exceeding $1'000 are [publicly listed](https://www.politifact.com/truth-o-meter/blog/2011/oct/06/who-pays-for-politifact/). Around one third of the statements were [suggested by readers](https://www.politifact.com/truth-o-meter/article/2018/feb/12/principles-truth-o-meter-politifacts-methodology-i/). [PolitiFact won the Pulitzer Price for National Reporting in 2009](https://web.archive.org/web/20090919173210/http://www.pulitzer.org/citation/2009-National-Reporting).
 
 In order to evaluate a possible bias better we looked at the rulings of each
 journalist. In total 368 journalists made judged statements, 43 of those made
@@ -126,6 +126,9 @@ The ratio is however very drastic and underlines more the selection bias of
 statements, the statements were probably not randomly selected. Instead the
 selection is biased towards what the organisation deemed to be newsworthy. The
 ratio of lies could therefore lie much lower.
+
+Based on this we deem the source to somewhat reliable but also biased, but not
+biased enough to not consider the data as valuable and insightful.
 
 ## Number of lies per speaker
 
