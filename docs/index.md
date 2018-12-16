@@ -92,6 +92,7 @@ vs 21%). Both parties have roughly the same amount of true statements (3255 and
 ![subjects_plot](/images/subjects_plot.png)
 
 **TODO:**
+The importance of the different political subjects varies. Most common subject turns out to be economy with nearly **3500** statements. The second one appears to be politics with nearly **2400** statements. Security has **1600** statements. We have **1527** statements related to family, **1300** to health, **900** to immigration, **900** to environment. We can observe that all these subjects are reccurent in politics and economy seems to be particularly proeminent in these statements. This might possibly reflect politics priorities.
 
 ## Where were these statements made?
 
