@@ -170,6 +170,8 @@ Let's also see it normalized:
 
 <a data-fancybox="gallery" href="images/statement_years_count_percentage_norm.png"><img src="images/statement_years_count_percentage_norm.png"></a>
 
+#### Answer: The top Lie year was 2012, and the Top Truth year was 2007!
+
 ### Top lying month is ...
 Let's find out during which months the number of false statements is the biggest. False statements include statements that are _false_, _pants-fire_, and _barely_true_.
 
@@ -201,6 +203,28 @@ It is interesting to see that there is no time where truth leads the game. The n
 
 #### Answer: The top Lie month is October, and the Top Truth month is January!
 
+### Top lying week-day is ...
+Let's see during which week day we should not believe polititian's statements.
+
+The total count of statements is shown in the plot bellow:
+<a data-fancybox="gallery" href="images/statement_weekday_count.png"><img src="images/statement_weekday_count.png"></a>
+
+The biggest number of statements is given during Tuesday. And the least number of statements is given in Saturday.
+
+And the statement counts with labels is:
+<a data-fancybox="gallery" href="images/statement_weekday_count_with_labels.png"><img src="images/statement_weekday_count_with_labels.png"></a>
+
+We can see that the highest number of statement count with label _Pants on Fire_ is on Wednesday. On the other hand, the biggest number of _True_ statements is on Tuesday.
+
+But, let's not conclude anything before seeing the percentage:
+<a data-fancybox="gallery" href="images/statement_weekday_count_percentage.png"><img src="images/statement_weekday_count_percentage.png"></a>
+
+and normalized plot:
+<a data-fancybox="gallery" href="images/statement_weekday_count_percentage_norm.png"><img src="images/statement_weekday_count_percentage_norm.png"></a>
+
+These two plots show summed negative statements (_false_, _pants-fire_, _barely_true) and we can see that the biggest number of false statements is on Tuesday, however the proportionally bigger number of false statements is given on Wednesday, around **58.18 %**. In addition, we can see that during Saturday there is the least number of false statements, but also the proportion of false statements is smallest, around **54.42 %**.
+
+#### Answer: The top Lie week-day is Wednesday, and the Top Truth week-day is Saturday!
 
 
 ## Lying cantons?
