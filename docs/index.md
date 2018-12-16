@@ -68,8 +68,6 @@ The distribution of labels over the years reflects the general amount of data fo
 Here we compare the false statements (pants on fire and false) with true statements (all the other statements). We observe that this ratio of false-to-true statements for democrats goes slightly downwards, but for Republicans the ratio is on a steep climb.
 
 
-**TODO:**
-
 ## Who makes these statements?
 
 <a data-fancybox="gallery" href="images/nb_statements_10_largest_groups.png"><img src="images/nb_statements_10_largest_groups.png"></a>
@@ -95,15 +93,18 @@ vs 21%). Both parties have roughly the same amount of true statements (3255 and
 <a data-fancybox="gallery" href="images/biggest_liers_plot.png"><img src="images/biggest_liers_plot.png"></a>
 
 
-**TODO:**
-
 ## What are the statements about?
 
 <a data-fancybox="gallery" href="images/subjects_plot.png"><img src="images/subjects_plot.png"></a>
 
 
-**TODO:**
-The importance of the different political subjects varies. Most common subject turns out to be economy with nearly **3500** statements. The second one appears to be politics with nearly **2400** statements. Security has **1600** statements. We have **1500** statements related to family, **1300** to health, **900** to immigration, **900** to environment. We can observe that all these subjects are reccurent in politics. Economy seems to be particularly proeminent in these statements. This might possibly reflect politics priorities.
+The importance of the different political subjects varies. Most common subject
+turns out to be economy with nearly **3500** statements. The second one appears
+to be politics with nearly **2400** statements. Security has **1600**
+statements. We have **1500** statements related to family, **1300** to health,
+**900** to immigration, **900** to environment. We can observe that all these
+subjects are recurrent in politics. Economy seems to be particularly prominent
+in these statements. This might possibly reflect politics priorities.
 
 ## Where were these statements made?
 
@@ -111,37 +112,6 @@ The importance of the different political subjects varies. Most common subject t
 
 <a data-fancybox="gallery" href="images/context_plot.png"><img src="images/context_plot.png"></a>
 
-
-**TODO:**
-
-## Bringing in election data
-
-The final results for the election in 2018 where not out at the time of
-writing, therefore only the results for the elections in 2012 2014, and 2016
-where used. In order to compare different behaviour we chose to compare
-politicians from the house and congress during this period. There were 5653
-different politicians with votes in this period. Since we are interested in the
-effect of the statements on the voting results we need at least two periods.
-This leaves us with 1110 politicians. The voting cycle for every position is
-not the same, we considered all combinations as a valid combination as along as
-there was data.
-
-Combining the election results with the statements gives data for 48
-politicians. Further requiring that some statements were made in both time
-periods (two years prior to an election in the two-year cycle) reduces the
-number to 5 politicians. For those five politicians we could build 10 data
-points to compare the false-true-ratio to the election results:
-
-<a data-fancybox="gallery" href="images/difference_election_results.png"><img src="images/difference_election_results.png"></a>
-
-
-Given the low number of matches found we would not advice to draw any
-conclusions from these findings.
-
-For these politicians we observed only one period in which an increase in the
-false-true-ratio had a negative effect.
-
-<a data-fancybox="gallery" href="images/difference_false_true_ratio_to_election_results.png"><img src="images/difference_false_true_ratio_to_election_results.png"></a>
 
 
 ## On the source and quality of the statements
@@ -174,44 +144,73 @@ biased enough to not consider the data as valuable and insightful.
 ## Number of statements per speaker
 
 <!-- <a data-fancybox="gallery" href="images/label_counts_overall.png"><img src="images/label_counts_overall.png"></a> -->
-**TODO:**
-People are not equal when we consider the number of statements recorded and assessed by politifact. Two president appear at the top of the list: Donald Trump with **639** statements and Barac Obama with **619** satements. 3rd place comes to Hillary Clinton, who was First Lady of U.S. and senator. In the top 10 we have people having more than **100** statements. This number decreases drastically for the remaining **300** other people.
+
+The number of statements per speaker is not uniform. For example the two last
+presidents president appear at the top of the list: Donald Trump with **639**
+statements and Barack Obama with **619** statements. 3rd place comes to Hillary
+Clinton, who was First Lady, a senator and a presidential candidate. In the top
+10 we have people having more than **100** statements. This number decreases
+drastically for the remaining **300** other people.
 
 ## The evolution of lies during time?
 
 <a data-fancybox="gallery" href="images/statement_years_count.png"><img src="images/statement_years_count.png"></a>
-**TODO:**
-Variations of number of lies is visible across the years. At the beginning of politifact lies are the rarest with 250 lies in 2007. This also corresponds to a lower total number of statements. Moreover, 2 peaks can be observed. The first one occurs in 2012 with 2000 lies and the second one occurs in 2016 with 1800 lies. Both peaks correspond to U.S. presidential elections when politics are at their peak of activity.
+
+Variations of number of lies is visible across the years. At the beginning of
+PolitiFact lies are the rarest with 250 lies in 2007. This also corresponds to
+a lower total number of statements. Moreover, two peaks can be observed. The
+first one occurs in 2012 with 2000 lies and the second one occurs in 2016 with
+1800 lies. Both peaks correspond to U.S. presidential elections when politics
+are at their peak of activity.
 
 ## Who are the biggest liars (people/groups/context)
-**TODO:**
-We consider as big liar a person who is reported to lie often with respect to the politifacts data gathered. The biggest liar is the U.S. president Donald Trump with **92 pants** on fire statements. It corresponds to **14%** of its recorded statements. Michele Barman has a even higher pants on fire percentage of **26%** for **16** pants on fire. She is a member of the Republican Party and is a former member of the United States House of Representatives. Other politicians as Mitt Romney, Rick Perry or Newt Gingrich have between 10 and 15 pants on fire. The former U.S. president Barac Obama has **9** pants on fire, but it represents a proportion of pants on fire **10** times lower than for Donald Trump.
 
-## Do politicians coming from different states lie more?
-**TODO:**
+We consider as big liar a person who is reported to lie often with respect to
+the PolitiFacts data gathered. Under these conditions the biggest liar is the
+current U.S. president Donald Trump with **92 pants on fire** statements. It
+corresponds to **14%** of his recorded statements. Michele Barman has a even
+higher pants on fire percentage of **26%** for a total of **16** pants on fire
+statements. She is a member of the Republican Party and is a former member of
+the United States House of Representatives. Other politicians worth mentioning
+are Mitt Romney, Rick Perry or Newt Gingrich with 10 to 15 pants on fire
+statements. The former U.S.  president Barack Obama has **9** pants on fire,
+but it represents a proportion of an order of magnitude lower than for Donald
+Trump.
 
 ## When do they lie?
 
 ### Top lying year is ...
-Let's find out during which year the number of false statements was the biggest.
-
-First, let's see the total count distribution of statements over the years.
+The total distribution of statements over the years:
 
 <a data-fancybox="gallery" href="images/statement_month_count.png"><img src="images/statement_month_count.png"></a>
 
-From the plot we can notice that the biggest number of statements from this dataset was collected during 2012. We can also notice a small oscillation in the counts where 2012, 2014, 2016 represent also local minima. This can probably be explained by the fact that the elections were during that years.
+From the plot we observe that the biggest number of statements from this
+dataset was collected during 2012. Small oscillation in the years 2012, 2014,
+2016 represent also local maxima, which can be explained by the occurrence of
+elections were held in these years.
 
-Now, let's see the count of statements divided into groups based on label.
+Looking at the distribution of rulings for each year:
 
 <a data-fancybox="gallery" href="images/statement_years_count_with_labels.png"><img src="images/statement_years_count_with_labels.png"></a>
 
-From this plot we can notice that statements labeled with _Pants on Fire_ label had the highest count in 2017. On the other hand, the number of _True_ statements was the highest during 2011. Please note that this is only the count of statements, and it does not mean that plititians lied the most during 2017. Therefore, let's see the proportion:
+From this plot we can notice that statements ruled as _pants on fire_ had the
+highest count in 2017. On the other hand, the number of _true_ statements was
+the highest during 2011. Please note that this is only the count of statements,
+and it does not mean that politicians lied the most during 2017, as we don't
+know the total number of statements made.
+
+Therefore, let's see the proportion:
 
 <a data-fancybox="gallery" href="images/statement_years_count_percentage.png"><img src="images/statement_years_count_percentage.png"></a>
 
-From the plot we can notice that statements collected during the 2000 and 2002 were all negative/false ones. However, the number of collected statements in that period is neglectable, so we wont discuss about it.
+From the plot we can notice that statements collected during the 2000 and 2002
+were all negative/false ones. However, the number of collected statements in
+that period is neglectable.
 
-From the plot we can see that the biggest proportion of false statements was during 2012, around **58.54**. On the contrary, we can see that during 2007, the proportion percentage of positive/true statements was greater than the percentage of negative/false statements, around **47.79**.
+We also notice that the biggest proportion of false statements was
+during 2012, around **58.54**. On the contrary, we can see that during 2007,
+the proportion percentage of positive/true statements was greater than the
+percentage of negative/false statements, around **47.79**.
 
 Let's also see it normalized:
 
@@ -221,21 +220,33 @@ Let's also see it normalized:
 
 
 ### Top lying month is ...
-Let's find out during which months the number of false statements is the biggest. False statements include statements that are _false_, _pants-fire_, and _barely_true_.
+
+Let's find out during which months the number of false statements is the
+biggest. False statements include statements that are _false_, _pants on fire_,
+and _barely true_.
 
 First, let's see the total count distribution of statements over the months.
 
 <a data-fancybox="gallery" href="images/statement_month_count.png"><img src="images/statement_month_count.png"></a>
 
-From this plot we can see that the biggest number of statements is made during the October probably because the voting usually ends in November.
+From this plot we can see that the biggest number of statements is made during
+the October, this reflects the fact that elections occur in November.
 
-Now, it will be nice to see the count of statement labels during each month, to see how many statements were positive (_true_, _mostly-true_, _half-true) and negative depending on the month. Labels are noted in the plot's legend.
+Now, it will be nice to see the count of statement labels during each month, to
+see how many statements were positive (_true_, _mostly-true_, _half-true_) and
+negative depending on the month. Labels are noted in the plot's legend.
 
 <a data-fancybox="gallery" href="images/statement_month_count_with_labels.png"><img src="images/statement_month_count_with_labels.png"></a>
 
-From this plot, we can notice that the biggest number of false statements is given during the October as well. In addition, the number of _Pants on Fire_ statements is also the biggest during the October. We should not conclude here that polititians lie the most durning the October. It is true that the number of false statements during the October is the highest, but we should not forget that also the total number of statements is also highest during this month.
+From this plot, we can notice that the biggest number of false statements is
+given during the October as well. In addition, the number of _pants on fire_
+statements is also the biggest during the October. We should not conclude here
+that politicians lie the most during the October. It is true that the number
+of false statements during the October is the highest, but we should not forget
+that also the total number of statements is also highest during this month.
 
-Let's see the percentage of negative statements in comparison to the total amount of statements given in that month.
+Let's see the percentage of negative statements in comparison to the total
+amount of statements given in that month.
 
 <a data-fancybox="gallery" href="images/statement_month_count_percentage.png"><img src="images/statement_month_count_percentage.png"></a>
 
@@ -243,28 +254,33 @@ And let's see it normalized:
 
 <a data-fancybox="gallery" href="images/statement_month_count_percentage_norm.png"><img src="images/statement_month_count_percentage_norm.png"></a>
 
-In the end we see, that indeed the biggest number of negative statements is given durng the October, around **62.15 %**.
+In the end we see, that indeed the biggest number of negative statements is
+given during the October, around **62.15 %**.
 
-On the other hand, the biggest number of positive/true statements is given during the January, around **50.73 %**.
+On the other hand, the biggest number of positive/true statements is given
+during the January, around **50.73 %**.
 
-It is interesting to see that there is no time where truth leads the game. The number of negative/false statements is always at least 50% or above.
+It is interesting to see that there is no time where truth leads the game. The
+number of negative/false statements is always at least 50% or above.
 
 **Answer: The top Lie month is October, and the Top Truth month is January!**
 
 
-
 ### Top lying week-day is ...
-Let's see during which week day we should not believe polititian's statements.
+Let's see during which week day we should not believe politician's statements.
 
 The total count of statements is shown in the plot bellow:
 <a data-fancybox="gallery" href="images/statement_weekday_count.png"><img src="images/statement_weekday_count.png"></a>
 
-The biggest number of statements is given during Tuesday. And the least number of statements is given in Saturday.
+Most statements are made on Tuesday, compared to Saturday where the least
+statements are made.
 
 And the statement counts with labels is:
 <a data-fancybox="gallery" href="images/statement_weekday_count_with_labels.png"><img src="images/statement_weekday_count_with_labels.png"></a>
 
-We can see that the highest number of statement count with label _Pants on Fire_ is on Wednesday. On the other hand, the biggest number of _True_ statements is on Tuesday.
+We can see that the highest number of statement count with label _pants on
+fire_ is on Wednesday. On the other hand, the biggest number of _true_
+statements is on Tuesday.
 
 But, let's not conclude anything before seeing the percentage:
 <a data-fancybox="gallery" href="images/statement_weekday_count_percentage.png"><img src="images/statement_weekday_count_percentage.png"></a>
@@ -272,14 +288,29 @@ But, let's not conclude anything before seeing the percentage:
 and normalized plot:
 <a data-fancybox="gallery" href="images/statement_weekday_count_percentage_norm.png"><img src="images/statement_weekday_count_percentage_norm.png"></a>
 
-These two plots show summed negative statements (_false_, _pants-fire_, _barely_true) and we can see that the biggest number of false statements is on Tuesday, however the proportionally bigger number of false statements is given on Wednesday, around **58.18 %**. In addition, we can see that during Saturday there is the least number of false statements, but also the proportion of false statements is smallest, around **54.42 %**.
+These two plots show summed negative statements (_false_, _pants-on-fire_,
+_barely true_) and we can see that the biggest number of false statements is
+reported on Tuesday, however the proportionally bigger number of false
+statements is given on Wednesday, around **58.18 %**. In addition, we can see
+that during Saturday there is the least number of false statements, but also
+the proportion of false statements is smallest, around **54.42 %**.
 
 **Answer: The top Lie week-day is Wednesday, and the Top Truth week-day is Saturday!**
 
 
+## Bringing in election data
 
+The final results for the election in 2018 where not out at the time of
+writing, therefore only the results for the elections in 2012 2014, and 2016
+where used. In order to compare different behaviour we chose to compare
+politicians from the house and congress during this period. There were 5653
+different politicians with votes in this period. Since we are interested in the
+effect of the statements on the voting results we need at least two periods.
+This leaves us with 1110 politicians. The voting cycle for every position is
+not the same, we considered all combinations as a valid combination as along as
+there was data.
 
-## Lying cantons?
+## Lying states?
 Let's see the number of statements depending on the canton. What canton gave the most number of statements?
 
 <a data-fancybox="gallery" href="images/map1.PNG"><img src="images/map1.PNG"></a>
@@ -288,13 +319,31 @@ And now, what are the states that had the most number of negative/false statemen
 
 <a data-fancybox="gallery" href="images/map2.PNG"><img src="images/map2.PNG"></a>
 
+## Bringing in election data
+
+The final results for the election in 2018 where not out at the time of
+writing, therefore only the results for the elections in 2012 2014, and 2016
+where used. In order to compare different behaviour we chose to compare
+politicians from the house and congress during this period. There were 5653
+different politicians with votes in this period. Since we are interested in the
+effect of the statements on the voting results we need at least two periods.
+This leaves us with 1110 politicians. The voting cycle for every position is
+not the same, we considered all combinations as a valid combination as along as
+there was data.
+
+Combining the election results with the statements gives data for 48
+politicians. Further requiring that some statements were made in both time
+periods (two years prior to an election in the two-year cycle) reduces the
+number to 5 politicians. For those five politicians we could build 10 data
+points to compare the false-true-ratio to the election results:
+
+<a data-fancybox="gallery" href="images/difference_election_results.png"><img src="images/difference_election_results.png"></a>
 
 
+Given the low number of matches found we would not advice to draw any
+conclusions from these findings.
 
+For these politicians we observed only one period in which an increase in the
+false-true-ratio had a negative effect.
 
-# References
-- Paper: William Yang Wang, "Liar, Liar Pants on Fire": A New Benchmark Dataset for Fake News Detection, to appear in Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics (ACL 2017), web: [https://arxiv.org/pdf/1705.00648.pdf](https://arxiv.org/pdf/1705.00648.pdf),
-- Vancouver, BC, Canada, July 30-August 4, ACL. Dataset link:[https://www.cs.ucsb.edu/~william/data/liar_dataset.zip](https://www.cs.ucsb.edu/~william/data/liar_dataset.zip)
-- Github dataset link:[https://github.com/nishitpatel01/Fake_News_Detection/tree/master/liar_dataset](https://github.com/nishitpatel01/Fake_News_Detection/tree/master/liar_dataset)
-- Website: [https://www.cs.ucsb.edu/~william/software.html](https://www.cs.ucsb.edu/~william/software.html)
-- Politifact API: [https://www.politifact.com//api/v/2/statement/11685/?format=json](https://www.politifact.com//api/v/2/statement/11685/?format=json)
+<a data-fancybox="gallery" href="images/difference_false_true_ratio_to_election_results.png"><img src="images/difference_false_true_ratio_to_election_results.png"></a>
