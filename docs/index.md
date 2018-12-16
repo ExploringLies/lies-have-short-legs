@@ -12,7 +12,7 @@ it really true that we cannot get away with a lie and that the truth always
 comes out? In this report we want to answer this question by analysing public statements
 of voted politicians in the USA.
 
-For this we collected **15471** statements from
+For this we collected **12642** statements from
 [politifact](https://www.politifact.com/). These were statements ranging from
 2011 to 2018, all were ruled on a scale from *pants-on-fire* to *true*. The
 statements vary from state-politics to health over security concerns and were
@@ -38,13 +38,16 @@ and later rechecked by three editors, the assigned label comes on a [scale of si
 - **FALSE**: The statement is not accurate.
 - **PANTS ON FIRE**: The statement is not accurate and makes a ridiculous claim.
 
+We scraped the API of Politifact, [example API call](http://www.politifact.com/api/v/2/statement/99/?format=json) in order to collect as many data points as possible.
+
 ![labels_counts_overall](/images/label_counts_overall.png)
 
-As can be seen 
+As can be seen the label `mostly false` does not occur in our dataset. The
+labels seem to follow a normal distribution with a centre around `half-true`.
 
 ![labels_over_years](/images/labels_over_years.png)
 
-
+The distribution of labels over the years is reflects the general amount of data for these years. **TODO check this with a better plot**
 
 ## When were these statements made?
 
