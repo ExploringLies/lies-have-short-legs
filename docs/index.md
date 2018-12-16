@@ -47,12 +47,12 @@ We scraped the API of Politifact, [example API call](http://www.politifact.com/a
 
 <a data-fancybox="gallery" href="images/label_counts_overall.png"><img src="images/label_counts_overall.png"></a>
 
-As can be seen the label `mostly false` does not occur in our dataset. The
+As can be seen, the label `mostly false` does not occur in our dataset. The
 labels seem to follow a normal distribution with a centre around `half-true`.
 
 ![labels_over_years](/images/labels_over_years.png)
 
-The distribution of labels over the years is reflects the general amount of data for these years. **TODO check this with a better plot**
+The distribution of labels over the years reflects the general amount of data for these years. **TODO check this with a better plot**
 
 ## When were these statements made?
 
@@ -135,7 +135,7 @@ biased enough to not consider the data as valuable and insightful.
 
 <!-- <a data-fancybox="gallery" href="images/label_counts_overall.png"><img src="images/label_counts_overall.png"></a> -->
 **TODO:**
-People are not equal when we consider the number of statements recorded and assessed by politifact. Two president appear at the top of the list: Donald Trump with **639** statements and Barac Obama with **619** satements. 3rd place comes to Hillary Clinton, who was First Lady of USA and senator. In the top 10 we have people having more than **100** statements. This number decreases drastically for the remaining **300** other people.
+People are not equal when we consider the number of statements recorded and assessed by politifact. Two president appear at the top of the list: Donald Trump with **639** statements and Barac Obama with **619** satements. 3rd place comes to Hillary Clinton, who was First Lady of U.S. and senator. In the top 10 we have people having more than **100** statements. This number decreases drastically for the remaining **300** other people.
 
 ## The evolution of lies during time?
 
@@ -144,7 +144,7 @@ People are not equal when we consider the number of statements recorded and asse
 
 ## Who are the biggest liars (people/groups/context)
 **TODO:**
-We consider as big liar a person who is reported to lie often with respect to the politifacts data gathered. The biggest liar is the USA president Donald Trump with **92 pants** on fire statements. It corresponds to **14%** of its recorded statements. Michele Barman has a even higher pants on fire percentage of **26%** for **16** pants on fire. She is a member of the Republican Party and is a former member of the United States House of Representatives. Other politicians as Mitt Romney, Rick Perry or Newt Gingrich have between 10 and 15 pants on fire. The former USA president Barac Obama has **9** pants on fire, but it represents a proportion of pants on fire **10** times lower than for Donald Trump.
+We consider as big liar a person who is reported to lie often with respect to the politifacts data gathered. The biggest liar is the U.S. president Donald Trump with **92 pants** on fire statements. It corresponds to **14%** of its recorded statements. Michele Barman has a even higher pants on fire percentage of **26%** for **16** pants on fire. She is a member of the Republican Party and is a former member of the United States House of Representatives. Other politicians as Mitt Romney, Rick Perry or Newt Gingrich have between 10 and 15 pants on fire. The former U.S. president Barac Obama has **9** pants on fire, but it represents a proportion of pants on fire **10** times lower than for Donald Trump.
 
 ## Do politicians coming from different states lie more?
 **TODO:**
