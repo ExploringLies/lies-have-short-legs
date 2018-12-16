@@ -65,7 +65,7 @@ The distribution of labels over the years reflects the general amount of data fo
 <a data-fancybox="gallery" href="images/ratio_false_true_parties.png"><img src="images/ratio_false_true_parties.png"></a>
 
 
-We observe that the ratio of false-to-true statements for democrats goes slightly downwards, but for Republicans the ratio is on a steep climb.
+Here we compare the false statements (pants on fire and false) with true statements (all the other statements). We observe that this ratio of false-to-true statements for democrats goes slightly downwards, but for Republicans the ratio is on a steep climb.
 
 
 **TODO:**
