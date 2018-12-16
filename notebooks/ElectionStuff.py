@@ -49,6 +49,7 @@ from utils.statement_handling import extract_information, safe_json_read
 
 from importlib import reload
 import seaborn as sns
+sns.set(style="whitegrid", palette="pastel")
 
 %matplotlib inline
 import utils.statement_handling as SH
@@ -233,6 +234,10 @@ election_results.head()
 
 # <codecell>
 
+election_results.shape
+
+# <codecell>
+
 idx_multiple_election_results = election_results.loc[:, [c for c in election_results.columns if any((c.endswith(str(y)) for y in [2012, 2014, 2016]))]].notna().sum(axis=1) > 1
 
 print(f"we have multple election results for {idx_multiple_election_results.sum()} politicians ({idx_multiple_election_results.mean()}%)")
@@ -290,14 +295,16 @@ statements_with_elections['simple_label'] = statements_with_elections['label'].a
 def simplify_votes(df):
     df = df.copy()
     for y in [2014, 2016]:
-        cols = [c for c in df.columns if str(y) in c]
+        cols = [c for c in df.columns if str(y) in c and c.endswith('pct')]
+        for c in cols:
+            df.loc[df[c[:-4]] == 'Unopposed', c] = 1.0
         df = combine_first(df, cols, f'primary_votes_{y}', drop_cols=True)
         
     return df.rename(columns={'primary_votes_all_2012_pct': 'primary_votes_2012'})
 
 # <codecell>
 
-statements_with_elections = simplify_votes(statements_with_elections)
+simple_votes = simplify_votes(election_results)
 
 # <markdowncell>
 
@@ -310,7 +317,7 @@ statements_with_elections = simplify_votes(statements_with_elections)
 
 # <codecell>
 
-statements_with_elections
+statements['statement_month'] = statements.statement_date.dt.year * 100 + statements.statement_date.dt.month
 
 # <codecell>
 
@@ -363,18 +370,14 @@ def ratio_for_period(statements, period):
 
     _t = pd.pivot_table(_t, index=['speaker_last_name', 'speaker_home_state'], values='count_{0}_{1}'.format(*_period_year_(period)), columns='simple_label', ).reset_index()
     _t = _t.loc[_t['false'].notnull()] # we are only interested in the impact of lies -> drop the rows for which we don't have any lies
-    _t['ratio'] = np.inf # 
+    _t['ratio_false_true_statements'] = np.inf # 
     _h = _t['true'].notnull()
-    _t.loc[_t['true'].notnull(), 'ratio'] = _t.loc[_h, 'false'] / _t.loc[_h, 'true']
-    return _t[['ratio', 'speaker_last_name', 'speaker_home_state']].rename(columns={'ratio': 'ratio_{0}_{1}'.format(*_period_year_(period))})
+    _t.loc[_t['true'].notnull(), 'ratio_false_true_statements'] = _t.loc[_h, 'false'] / _t.loc[_h, 'true']
+    return _t[['ratio_false_true_statements', 'speaker_last_name', 'speaker_home_state']].rename(columns={'ratio_false_true_statements': 'ratio_false_true_statements_{0}_{1}'.format(*_period_year_(period))})
 
 # <codecell>
 
 true_false_ratios = reduce(lambda acc, el: acc.merge(el, on=['speaker_last_name', 'speaker_home_state'], how='outer'), [ratio_for_period(statements, p) for p in periods])
-
-# <codecell>
-
-_t[:3]
 
 # <codecell>
 
@@ -386,6 +389,84 @@ for l, r in [(2012, 2014), (2014, 2016), (2012, 2016)]:
     _t[f'diff_votes_{l}_{r}'] = _t[f'primary_votes_{l}'] - _t[f'primary_votes_{r}']
     #_t[f'diff_ratio_{l}_{r}'] = _t[f'ratio_2010_2012'] - _t['ratio_2012_2014']
 _t.loc[(_t['diff_votes_2012_2014'].notnull() | _t['diff_votes_2012_2016'].notnull() | _t['diff_votes_2014_2016'].notnull()), sorted(_t.columns)]
+
+# <codecell>
+
+votes_idx = (_t['diff_votes_2012_2014'].notnull() | _t['diff_votes_2012_2016'].notnull() | _t['diff_votes_2014_2016'].notnull())
+statement_idx = reduce(lambda acc, el: acc | el, [_t[c].notnull() for c in _t.columns if c.startswith('ratio_false_true_statements')])
+
+
+# <codecell>
+
+_f = _t.loc[votes_idx & statement_idx, sorted([c for c in _t.columns if c.startswith('diff_votes') or c.startswith('ratio_')] + ['candidate_name'])]
+
+_f['diff_ratio_2012_2014'] = _f['ratio_false_true_statements_2010_2012'] - _f['ratio_false_true_statements_2012_2014']
+_f['diff_ratio_2012_2016'] = _f['ratio_false_true_statements_2008_2012'] - _f['ratio_false_true_statements_2012_2016']
+_f['diff_ratio_2014_2016'] = _f['ratio_false_true_statements_2012_2014'] - _f['ratio_false_true_statements_2014_2016']
+
+_f = _f[[c for c in _f.columns if c.startswith('diff_ratio') or c.startswith('diff_votes')] + ['candidate_name']]
+
+# <codecell>
+
+import matplotlib.pyplot as plt
+_ratios = _f.loc[_f.notnull().all(axis=1), [c for c in _f.columns if c.startswith('diff_ratio')]].values.reshape(-1)
+_votes = _f.loc[_f.notnull().all(axis=1), [c for c in _f.columns if c.startswith('diff_votes')]].values.reshape(-1)
+
+_d = pd.DataFrame([_ratios, _votes]).T
+_d.columns = ['ratio', 'votes']
+
+sns.lmplot(x='ratio', y='votes', data=_d)
+plt.xlabel('Difference in ratios over election period')
+plt.ylabel('Difference in election results')
+plt.title('Difference in false-true ratio to election results')
+plt.tight_layout()
+plt.savefig('../docs/images/difference_false_true_ratio_to_election_results.png')
+
+# <codecell>
+
+_ys = [c for c in _t.columns if c.startswith('diff_votes')]
+_cs = [c for c in _t.columns if c.startswith('ratio') and any([c[-9:] == p[-9:] for p in _ys])] + _ys
+
+# <codecell>
+
+_tt = _t.loc[votes_idx & statement_idx, sorted(_cs + ['candidate_name'])]
+_tt
+
+# <codecell>
+
+_ratios = _tt.loc[:, [c for c in _tt.columns if c.startswith('ratio')]].values.reshape(-1)
+_votes = _tt.loc[:, [c for c in _tt.columns if c.startswith('diff_votes')]].values.reshape(-1)
+
+_d = pd.DataFrame([_ratios, _votes]).T
+_d.columns = ['ratio', 'votes']
+_d = _d[_d.notna().all(axis=1)]
+
+sns.lmplot(x='ratio', y='votes', data=_d)
+plt.xlabel('False-True Ratio in election period')
+plt.ylabel('Difference in election results')
+plt.title('Difference in election results to false-true ratio')
+plt.tight_layout()
+plt.savefig('../docs/images/difference_election_results.png')
+
+# <codecell>
+
+_d.shape
+
+# <codecell>
+
+
+
+# <codecell>
+
+
+
+# <codecell>
+
+
+
+# <codecell>
+
+
 
 # <codecell>
 

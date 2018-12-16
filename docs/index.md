@@ -103,7 +103,31 @@ The importance of the different political subjects varies. Most common subject t
 
 ## Bringing in election data
 
-**TODO:**
+The final results for the election in 2018 where not out at the time of
+writing, therefore only the results for the elections in 2012 2014, and 2016
+where used. In order to compare different behaviour we chose to compare
+politicians from the house and congress during this period. There were 5653
+different politicians with votes in this period. Since we are interested in the
+effect of the statements on the voting results we need at least two periods.
+This leaves us with 1110 politicians. The voting cycle for every position is
+not the same, we considered all combinations as a valid combination as along as
+there was data.
+
+Combining the election results with the statements gives data for 48
+politicians. Further requiring that some statements were made in both time
+periods (two years prior to an election in the two-year cycle) reduces the
+number to 5 politicians. For those five politicians we could build 10 data
+points to compare the false-true-ratio to the election results:
+
+![difference_election_results](difference_election_results.png)
+
+Given the low number of matches found we would not advice to draw any
+conclusions from these findings.
+
+For these politicians we observed only one period in which an increase in the
+false-true-ratio had a negative effect.
+
+![difference_false_true_ratio_to_election_results](difference_false_true_ratio_to_election_results.png)
 
 ## On the source and quality of the statements
 
