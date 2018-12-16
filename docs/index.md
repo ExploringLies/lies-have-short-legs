@@ -51,11 +51,31 @@ The distribution of labels over the years is reflects the general amount of data
 
 ## When were these statements made?
 
+
 ![timeline_plot](/images/timeline_plot.png)
+![ratio_false_true_parties](ratio_false_true_parties.png)
+
+We observe that the ratio of false-to-true statements for democrats goes slightly downwards, but for Republicans the ratio is on a steep climb.
+
 
 **TODO**
 
 ## Who makes these statements?
+
+![nb_statements_10_largest_groups](nb_statements_10_largest_groups.png)
+
+The distribution of statements per group (this can be a party, a general
+organisation, a journalist, ...) shows that overall more statements from
+republicans were fact-checked. This could indicate a potential bias, but
+without knowing the complete number of statements made this is not enough to
+say that this source is biased.
+
+![nb_rulings_for_major_parties.png](nb_rulings_for_major_parties.png)
+![nb_simple_rulings_for_major_parties.png](nb_simple_rulings_for_major_parties.png)
+
+Given the rulings themselves we can clearly see that Republicans lie more (38%
+vs 21%). Both parties have roughly the same amount of true statements (3255 and
+3105 for the Republicans and the Democrats respectively).
 
 ![job_title_plot](/images/job_title_plot.png)
 ![biggest_liers_plot](/images/biggest_liers_plot.png)
