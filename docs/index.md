@@ -127,7 +127,7 @@ selection is biased towards what the organisation deemed to be newsworthy. The
 ratio of lies could therefore lie much lower.
 
 Based on this we deem the source to somewhat reliable but also biased, but not
-biased enough to not consider the data as valuable and insightful.
+biased enough to not consider the data valuable and insightful.
 
 ## Number of statements per speaker
 
@@ -347,4 +347,12 @@ representatives lie more or less than senators. We estimate that the number of
 statements for politicians who will be judged will increase, including the 2018
 elections should therefore yield interesting results.
 
-Estimating the bias of the dataset is a tricky question and should be researched with greater.
+Estimating the bias of the dataset is a tricky question and should be
+researched with greater care and more resources.
+
+Answering the main research question was not possible given the limited amount
+of statements for politicians. Including more sources such as [Fact
+Checker](http://www.washingtonpost.com/news/fact-checker/) from the Washington
+Post (which is not available in the EU and Switzerland without
+IP-address-faking) would require more resources and were out-of-scope for this
+report.
