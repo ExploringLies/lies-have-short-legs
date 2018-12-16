@@ -25,6 +25,21 @@ statements in the form of answering the 5Ws: Who, What, When, Where and Why.
 Since the question *Why were these statements made?* is not really answerable
 with our data we omit this question.
 
+## Understanding the statements
+
+Each statement was judged by a journalist based on [primary and public
+sources](https://www.politifact.com/truth-o-meter/article/2018/feb/12/principles-truth-o-meter-politifacts-methodology-i#Our%20sourcing),
+and later rechecked by three editors, the assigned label comes on a [scale of six values](https://www.politifact.com/truth-o-meter/article/2018/feb/12/principles-truth-o-meter-politifacts-methodology-i#Truth-O-Meter%20ratings):
+
+- **TRUE**: The statement is accurate and there’s nothing significant missing.
+- **MOSTLY TRUE**: The statement is accurate but needs clarification or additional information.
+- **HALF TRUE**: The statement is partially accurate but leaves out important details or takes things out of context.
+- **MOSTLY FALSE**: The statement contains an element of truth but ignores critical facts that would give a different impression.
+- **FALSE**: The statement is not accurate.
+- **PANTS ON FIRE**: The statement is not accurate and makes a ridiculous claim.
+
+![labels_over_years](/images/labels_over_years.png)
+
 ## When were these statements made?
 
 ![timeline_plot](/images/timeline_plot.png)
