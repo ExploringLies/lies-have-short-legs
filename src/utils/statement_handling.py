@@ -218,3 +218,10 @@ def clean_current_job(job):
         return 'mayor'
     else:
         return 'other'
+
+
+def simplify_label(l):
+    if l in ['pants-fire', 'false']:
+        return 'false'
+    else:
+        return 'true'
