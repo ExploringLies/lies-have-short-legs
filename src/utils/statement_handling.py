@@ -169,3 +169,51 @@ def label_to_nb(l):
     - think about this, this will give the false-hoods more weight
     """
     return ['true', 'mostly-true', 'half-true', 'barely-true', 'false', 'pants-fire'].index(l)
+
+
+def clean_current_job(job):
+    job = job.lower().strip()
+
+    if 'president' == job:
+        # there are a lot of "presidents". e.g. "president and ceo, empower texans"
+        return 'president'
+    elif 'presidential candidate' == job:
+        return 'presidential candidate'
+    elif 'former president' == job:
+        return 'former president'
+    elif any([j in job for j in ['u.s. senator']]):
+        if 'former' in job:
+            return 'former u.s. senator'
+        else:
+            return 'u.s. senator'
+    elif any([j in job for j in ['representative', 'u.s. house of representative', 'member of the u.s. house', 'house representative', 'house member', 'state representative', 'house majority leader', 'house minority leader', 'speaker of the house of representatives']]):
+        if 'former' in job:
+            return 'former u.s. house representative'
+        else:
+            return 'u.s. house representative'
+    elif any([j in job for j in ['u.s. congressman', 'congressman', 'congresswoman', 'senate majority leader', 'senate minority leader']]):
+        # shitty ambiguity, congress is both the house and the senate
+        if 'former' in job:
+            return 'former u.s. congressman'
+        else:
+            return 'u.s. congressman'
+    elif any([j in job for j in ['u.s. senate', 'senator', 'senate']]):
+        if 'former' in job:
+            return 'former senator'
+        else:
+            return 'senator'
+    elif any([j in job for j in ['state assemb']]):
+        return 'state assemblyman'
+    elif 'governor' in job:
+        if 'former' in job:
+            return 'former governor'
+        else:
+            return 'governor'
+    elif any([j in job for j in ['secretary']]):
+        return 'secretary'
+    elif 'county executive' in job:
+        return 'county executive'
+    elif 'mayor' in job:
+        return 'mayor'
+    else:
+        return 'other'
