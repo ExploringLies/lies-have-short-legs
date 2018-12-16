@@ -9,7 +9,7 @@
   </p>
   
   <p>
-    <a href="http://jelenabanjac.com/lies-have-short-legs/">
+    <a href="https://exploringlies.github.io/lies-have-short-legs/">
       Website
     </a>
   </p>
