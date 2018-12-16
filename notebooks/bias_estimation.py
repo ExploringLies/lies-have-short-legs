@@ -106,6 +106,7 @@ only_truthometer_label_idx = statements['label'].isin(truhometer_labels)
 
 sns.barplot(data=group_and_count(statements.loc[only_truthometer_label_idx, :], 'label'), x='count', y='label', order=truhometer_labels)
 plt.title("Count of label-types")
+plt.tight_layout()
 plt.savefig('../docs/images/label_counts_overall.png')
 
 # <codecell>
@@ -129,6 +130,7 @@ def add_year(df, year):
 
 d = pd.concat([add_year(group_and_count(statements.loc[(statements['statement_date'].dt.year == year) & only_truthometer_label_idx,: ], 'label'), year) for year in b])
 f = plt.figure(figsize=(20, 10))
+plt.tight_layout()
 sns.barplot(data=d, x='count', y='label', hue='year', order=truhometer_labels)
 plt.title("Count of labels over the years")
 plt.savefig('../docs/images/labels_over_years.png')
@@ -151,6 +153,7 @@ sns.barplot(data=group_and_count(statements, 'party')[:10], y='party', x='count'
 plt.xlabel('Number of statements')
 plt.ylabel('Group')
 plt.title('Number of statements for the largest 10 groups')
+plt.tight_layout()
 plt.savefig('../docs/images/nb_statements_10_largest_groups.png')
 
 # <codecell>
@@ -160,7 +163,12 @@ sns.barplot(data=group_and_count(statements.loc[statements.party.isin(parties_of
 plt.xlabel('Number of rulings')
 plt.ylabel('Party')
 plt.title('Number of rulings for the two major parties')
+plt.tight_layout()
 plt.savefig('../docs/images/nb_rulings_for_major_parties.png')
+
+# <codecell>
+
+statements['simple_label'] = statements.label.apply(SH.simplify_label)
 
 # <codecell>
 
@@ -176,6 +184,7 @@ plt.figure(figsize=(10, 5))
 sns.barplot(data=group_and_count(statements.loc[statements.party.isin(parties_of_interest), :], ['party', 'simple_label']), y='party', x='count', hue='simple_label')
 plt.xlabel('Number of rulings')
 plt.ylabel('Party')
+plt.tight_layout()
 plt.title('Number of simplified rulings for the two major parties')
 plt.savefig('../docs/images/nb_simple_rulings_for_major_parties.png')
 
@@ -207,6 +216,7 @@ for party in reversed(parties_of_interest):
     sns.regplot( data=count_per_year_and_label.loc[count_per_year_and_label.party.eq(party), :], x='year', y='ratio', label=party)
     
 plt.legend()
+plt.tight_layout()
 plt.title('Ratio of false to true statements over the years')
 plt.savefig('../docs/images/ratio_false_true_parties.png')
 
@@ -249,10 +259,12 @@ a = pd.merge(*[_ratio_(pd.DataFrame(pd.pivot_table(a.loc[a.party.eq(party)],
 
 a = a.loc[a.ratio_Democrat.lt(a.ratio_Democrat.quantile(0.9)) & a.ratio_Republican.lt(a.ratio_Republican.quantile(0.9)), :]
 
+f = plt.figure(figsize=(18, 10))
 sns.lmplot(data=a, x='ratio_Republican', y='ratio_Democrat')
-plt.title('Ratio comparision between Republican and Democrat rulings on author basis')
+plt.title('Ratio comparision between party-rulings on author basis')
 plt.xlabel('Ratio false-true statements for Republicans')
 plt.ylabel('Ratio false-true statements for Democrats')
+plt.tight_layout()
 plt.savefig('../docs/images/ratio_comparision_author_basis.png')
 
 # <codecell>
