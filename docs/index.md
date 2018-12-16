@@ -45,7 +45,7 @@ and later rechecked by three editors, the assigned label comes on a [scale of si
 
 We scraped the API of Politifact, [example API call](http://www.politifact.com/api/v/2/statement/99/?format=json) in order to collect as many data points as possible.
 
-<a data-fancybox="gallery" href="/images/label_counts_overall.png"><img src="/images/label_counts_overall.png"></a>
+<a data-fancybox="gallery" href="images/label_counts_overall.png"><img src="images/label_counts_overall.png"></a>
 
 As can be seen the label `mostly false` does not occur in our dataset. The
 labels seem to follow a normal distribution with a centre around `half-true`.
