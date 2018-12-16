@@ -50,15 +50,20 @@ We scraped the API of Politifact, [example API call](http://www.politifact.com/a
 As can be seen, the label `mostly false` does not occur in our dataset. The
 labels seem to follow a normal distribution with a centre around `half-true`.
 
-![labels_over_years](/images/labels_over_years.png)
+<a data-fancybox="gallery" href="images/labels_over_years.png"><img src="images/labels_over_years.png"></a>
+
+
 
 The distribution of labels over the years reflects the general amount of data for these years. **TODO check this with a better plot**
 
 ## When were these statements made?
 
 
-![timeline_plot](/images/timeline_plot.png)
-![ratio_false_true_parties](/images/ratio_false_true_parties.png)
+<a data-fancybox="gallery" href="images/timeline_plot.png"><img src="images/timeline_plot.png"></a>
+
+
+<a data-fancybox="gallery" href="images/ratio_false_true_parties.png"><img src="images/ratio_false_true_parties.png"></a>
+
 
 We observe that the ratio of false-to-true statements for democrats goes slightly downwards, but for Republicans the ratio is on a steep climb.
 
@@ -67,7 +72,8 @@ We observe that the ratio of false-to-true statements for democrats goes slightl
 
 ## Who makes these statements?
 
-![nb_statements_10_largest_groups](/images/nb_statements_10_largest_groups.png)
+<a data-fancybox="gallery" href="images/nb_statements_10_largest_groups.png"><img src="images/nb_statements_10_largest_groups.png"></a>
+
 
 The distribution of statements per group (this can be a party, a general
 organisation, a journalist, ...) shows that overall more statements from
@@ -75,29 +81,36 @@ republicans were fact-checked. This could indicate a potential bias, but
 without knowing the complete number of statements made this is not enough to
 say that this source is biased.
 
-![nb_rulings_for_major_parties.png](/images/nb_rulings_for_major_parties.png)
-![nb_simple_rulings_for_major_parties.png](/images/nb_simple_rulings_for_major_parties.png)
+<a data-fancybox="gallery" href="images/nb_rulings_for_major_parties.png"><img src="images/nb_rulings_for_major_parties.png"></a>
+
+<a data-fancybox="gallery" href="images/nb_simple_rulings_for_major_parties.png"><img src="images/nb_simple_rulings_for_major_parties.png"></a>
+
 
 Given the rulings themselves we can clearly see that Republicans lie more (38%
 vs 21%). Both parties have roughly the same amount of true statements (3255 and
 3105 for the Republicans and the Democrats respectively).
 
-![job_title_plot](/images/job_title_plot.png)
-![biggest_liers_plot](/images/biggest_liers_plot.png)
+<a data-fancybox="gallery" href="images/job_title_plot.png"><img src="images/job_title_plot.png"></a>
+
+<a data-fancybox="gallery" href="images/biggest_liers_plot.png"><img src="images/biggest_liers_plot.png"></a>
+
 
 **TODO:**
 
 ## What are the statements about?
 
-![subjects_plot](/images/subjects_plot.png)
+<a data-fancybox="gallery" href="images/subjects_plot.png"><img src="images/subjects_plot.png"></a>
+
 
 **TODO:**
 The importance of the different political subjects varies. Most common subject turns out to be economy with nearly **3500** statements. The second one appears to be politics with nearly **2400** statements. Security has **1600** statements. We have **1500** statements related to family, **1300** to health, **900** to immigration, **900** to environment. We can observe that all these subjects are reccurent in politics. Economy seems to be particularly proeminent in these statements. This might possibly reflect politics priorities.
 
 ## Where were these statements made?
 
-![states_plot](/images/states_plot.png)
-![context_plot](/images/context_plot.png)
+<a data-fancybox="gallery" href="images/states_plot.png"><img src="images/states_plot.png"></a>
+
+<a data-fancybox="gallery" href="images/context_plot.png"><img src="images/context_plot.png"></a>
+
 
 **TODO:**
 
@@ -119,7 +132,8 @@ periods (two years prior to an election in the two-year cycle) reduces the
 number to 5 politicians. For those five politicians we could build 10 data
 points to compare the false-true-ratio to the election results:
 
-![difference_election_results](difference_election_results.png)
+<a data-fancybox="gallery" href="images/difference_election_results.png"><img src="images/difference_election_results.png"></a>
+
 
 Given the low number of matches found we would not advice to draw any
 conclusions from these findings.
@@ -127,7 +141,8 @@ conclusions from these findings.
 For these politicians we observed only one period in which an increase in the
 false-true-ratio had a negative effect.
 
-![difference_false_true_ratio_to_election_results](difference_false_true_ratio_to_election_results.png)
+<a data-fancybox="gallery" href="images/difference_false_true_ratio_to_election_results.png"><img src="images/difference_false_true_ratio_to_election_results.png"></a>
+
 
 ## On the source and quality of the statements
 
@@ -145,7 +160,8 @@ much higher likelihood to be judged to lie. We again stress the point, that
 this is does not necessarily indicate a potential bias, as we lack ground
 truth.
 
-![ratio_comparision_author_basis](/images/ratio_comparision_author_basis.png)
+<a data-fancybox="gallery" href="images/ratio_comparision_author_basis.png"><img src="images/ratio_comparision_author_basis.png"></a>
+
 
 The ratio is however very drastic and underlines more the selection bias of
 statements, the statements were probably not randomly selected. Instead the
