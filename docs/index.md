@@ -130,7 +130,7 @@ ratio of lies could therefore lie much lower.
 Based on this we deem the source to somewhat reliable but also biased, but not
 biased enough to not consider the data as valuable and insightful.
 
-## Number of lies per speaker
+## Number of statements per speaker
 
 <!-- <a data-fancybox="gallery" href="images/label_counts_overall.png"><img src="images/label_counts_overall.png"></a> -->
 **TODO:**
@@ -142,6 +142,7 @@ biased enough to not consider the data as valuable and insightful.
 
 ## Who are the biggest liars (people/groups/context)
 **TODO:**
+We consider as big liar a person who is reported to lie often with respect to the politifacts data gathered. The biggest liar is the USA president Donald Trump with 92 pants on fire statements. It corresponds to 14% of its recorded statements. Michele Barman has a even higher pants on fire percentage of 26% for 16 pants on fire. She is a member of the Republican Party and is a former member of the United States House of Representatives. Other politicians as Mitt Romney, Rick Perry or Newt Gingrich have between 10 and 15 pants on fire. The former USA president Barac Obama has 9 pants on fire, but it represents a proportion of pants on fire 10 times lower than for Donald Trump.
 
 ## Do politicians coming from different states lie more?
 **TODO:**
