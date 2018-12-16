@@ -121,6 +121,34 @@ def clean_up_context(c):
         return '_ignore_'
     else:
         return 'others'
+    
+def clean_up_subject(c):
+    # Insensitive case search of terms to regroup similar subjects together
+    # normally this would have been done with a regex, but since the dataset is small enough this works well
+    
+    c = c.lower()
+    
+    if any([s in c for s in ['budget', 'deficit', 'debt', 'economy', 'finance', 'taxe', 'income', 'trade', 'pension', 'retirement', 'gas', 'price']]):
+        return 'economy'
+    elif any([s in c for s in ['health care', 'water' 'aid', 'medic', 'alcohol', 'welfare', 'disability', 'ebola', 'food']]):
+        return 'health'
+    elif any([s in c for s in ['energy', 'climate', 'environment', 'transportation', 'agriculture', 'weather', 'natur', 'nuclear']]):
+        return 'environment'
+    elif any([s in c for s in ['immigration', 'foreign']]):
+        return 'immigration'
+    elif any([s in c for s in ['fake', 'news', 'correction', 'update', 'ethics', 'public', 'administration', 'transparency']]):
+        return 'fake'
+    elif any([s in c for s in ['abortion', 'children', 'education', 'gay', 'sex', 'privacy', 'recreation', 'tourism']]):
+        return 'family'
+    elif any([s in c for s in ['corporation', 'job', 'civil', 'rights', 'ethics', 'labor', 'worker']]):
+        return 'rights'
+    elif any([s in c for s in ['gun', 'crim', 'justice', 'security', 'terrorism', 'military', 'afghanistan', 'iraq', 'drugs', 'safety', 'marijuana', 'penalty']]):
+        return 'security'
+    elif any([s in c for s in ['government', 'election', 'candidate', 'congress', 'history', 'parti']]):
+        return 'politics'
+
+    else:
+        return 'other_subject'
 
 
 def label_to_nb(l):
