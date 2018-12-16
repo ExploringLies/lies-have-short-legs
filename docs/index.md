@@ -12,7 +12,7 @@ it really true that we cannot get away with a lie and that the truth always
 comes out? In this report we want to answer this question by analysing public statements
 of voted politicians in the USA.
 
-For this we collected **12642** statements from
+For this we collected **15 471** statements from
 [politifact](https://www.politifact.com/). These were statements ranging from
 2011 to 2018, all were ruled on a scale from *pants-on-fire* to *true*. The
 statements vary from state-politics to health over security concerns and were
