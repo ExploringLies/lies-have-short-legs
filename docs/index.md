@@ -134,6 +134,7 @@ biased enough to not consider the data as valuable and insightful.
 
 <!-- <a data-fancybox="gallery" href="images/label_counts_overall.png"><img src="images/label_counts_overall.png"></a> -->
 **TODO:**
+People are not equal when we consider the number of statements recorded and assessed by politifact. Two president appear at the top of the list: Donald Trump with **639** statements and Barac Obama with **619** satements. 3rd place comes to Hillary Clinton, who was First Lady of USA and senator. In the top 10 we have people having more than **100** statements. This number decreases drastically for the remaining **300** other people.
 
 ## The evolution of lies during time?
 
@@ -142,7 +143,7 @@ biased enough to not consider the data as valuable and insightful.
 
 ## Who are the biggest liars (people/groups/context)
 **TODO:**
-We consider as big liar a person who is reported to lie often with respect to the politifacts data gathered. The biggest liar is the USA president Donald Trump with 92 pants on fire statements. It corresponds to 14% of its recorded statements. Michele Barman has a even higher pants on fire percentage of 26% for 16 pants on fire. She is a member of the Republican Party and is a former member of the United States House of Representatives. Other politicians as Mitt Romney, Rick Perry or Newt Gingrich have between 10 and 15 pants on fire. The former USA president Barac Obama has 9 pants on fire, but it represents a proportion of pants on fire 10 times lower than for Donald Trump.
+We consider as big liar a person who is reported to lie often with respect to the politifacts data gathered. The biggest liar is the USA president Donald Trump with **92 pants** on fire statements. It corresponds to **14%** of its recorded statements. Michele Barman has a even higher pants on fire percentage of **26%** for **16** pants on fire. She is a member of the Republican Party and is a former member of the United States House of Representatives. Other politicians as Mitt Romney, Rick Perry or Newt Gingrich have between 10 and 15 pants on fire. The former USA president Barac Obama has **9** pants on fire, but it represents a proportion of pants on fire **10** times lower than for Donald Trump.
 
 ## Do politicians coming from different states lie more?
 **TODO:**
