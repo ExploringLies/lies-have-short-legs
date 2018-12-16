@@ -295,13 +295,9 @@ This leaves us with 1110 politicians. The voting cycle for every position is
 not the same, we considered all combinations as a valid combination as along as
 there was data.
 
-<<<<<<< HEAD
 ## Lying cantons?
 Let's see the number of statements depending on the state. In which state there was the most number of statements given?
-=======
-## Lying states?
-Let's see the number of statements depending on the canton. What canton gave the most number of statements?
->>>>>>> d8a8964f1750b2f1ac0bd7b725eb9c6147ade4de
+
 
 <a data-fancybox="gallery" href="images/map1.PNG"><img src="images/map1.PNG"></a>
 
