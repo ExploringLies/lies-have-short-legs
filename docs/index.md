@@ -67,7 +67,7 @@ We observe that the ratio of false-to-true statements for democrats goes slightl
 
 ## Who makes these statements?
 
-![nb_statements_10_largest_groups](nb_statements_10_largest_groups.png)
+![nb_statements_10_largest_groups](/images/nb_statements_10_largest_groups.png)
 
 The distribution of statements per group (this can be a party, a general
 organisation, a journalist, ...) shows that overall more statements from
@@ -75,8 +75,8 @@ republicans were fact-checked. This could indicate a potential bias, but
 without knowing the complete number of statements made this is not enough to
 say that this source is biased.
 
-![nb_rulings_for_major_parties.png](nb_rulings_for_major_parties.png)
-![nb_simple_rulings_for_major_parties.png](nb_simple_rulings_for_major_parties.png)
+![nb_rulings_for_major_parties.png](/images/nb_rulings_for_major_parties.png)
+![nb_simple_rulings_for_major_parties.png](/images/nb_simple_rulings_for_major_parties.png)
 
 Given the rulings themselves we can clearly see that Republicans lie more (38%
 vs 21%). Both parties have roughly the same amount of true statements (3255 and
@@ -109,7 +109,7 @@ vs 21%). Both parties have roughly the same amount of true statements (3255 and
 PolitiFact [started in
 2007](https://www.politifact.com/truth-o-meter/article/2018/feb/12/principles-truth-o-meter-politifacts-methodology-i/)
 and describes itself as a "not-for-profit" organisation and is [owned by](https://www.politifact.com/truth-o-meter/article/2018/feb/12/principles-truth-o-meter-politifacts-methodology-i/#Our%20ownership) the [Poynter Institute for Media Studies](https://www.poynter.org/), but relies primarily on the financial support from the [Tampa Bay Times](http://www.tampabay.com/).
-Donations exceeding $1'000 are [publicly listed](https://www.politifact.com/truth-o-meter/blog/2011/oct/06/who-pays-for-politifact/). Around one third of the statements were [suggested by readers](https://www.politifact.com/truth-o-meter/article/2018/feb/12/principles-truth-o-meter-politifacts-methodology-i/).
+Donations exceeding $1'000 are [publicly listed](https://www.politifact.com/truth-o-meter/blog/2011/oct/06/who-pays-for-politifact/). Around one third of the statements were [suggested by readers](https://www.politifact.com/truth-o-meter/article/2018/feb/12/principles-truth-o-meter-politifacts-methodology-i/). [PolitiFact won the Pulitzer Price for National Reporting in 2009](https://web.archive.org/web/20090919173210/http://www.pulitzer.org/citation/2009-National-Reporting).
 
 In order to evaluate a possible bias better we looked at the rulings of each
 journalist. In total 368 journalists made judged statements, 43 of those made
@@ -120,15 +120,18 @@ much higher likelihood to be judged to lie. We again stress the point, that
 this is does not necessarily indicate a potential bias, as we lack ground
 truth.
 
-![ratio_comparision_author_basis](ratio_comparision_author_basis.png)
+![ratio_comparision_author_basis](/images/ratio_comparision_author_basis.png)
 
 The ratio is however very drastic and underlines more the selection bias of
 statements, the statements were probably not randomly selected. Instead the
 selection is biased towards what the organisation deemed to be newsworthy. The
 ratio of lies could therefore lie much lower.
 
+Based on this we deem the source to somewhat reliable but also biased, but not
+biased enough to not consider the data as valuable and insightful.
+
 ## Number of lies per speaker
-  
+
 <!-- <a data-fancybox="gallery" href="images/label_counts_overall.png"><img src="images/label_counts_overall.png"></a> -->
 **TODO:**
 
@@ -162,7 +165,7 @@ From this plot we can notice that statements labeled with _Pants on Fire_ label 
 
 <a data-fancybox="gallery" href="images/statement_years_count_percentage.png"><img src="images/statement_years_count_percentage.png"></a>
 
-From the plot we can notice that statements collected during the 2000 and 2002 were all negative/false ones. However, the number of collected statements in that period is neglectable, so we wont discuss about it. 
+From the plot we can notice that statements collected during the 2000 and 2002 were all negative/false ones. However, the number of collected statements in that period is neglectable, so we wont discuss about it.
 
 From the plot we can see that the biggest proportion of false statements was during 2012, around **58.54**. On the contrary, we can see that during 2007, the proportion percentage of positive/true statements was greater than the percentage of negative/false statements, around **47.79**.
 
