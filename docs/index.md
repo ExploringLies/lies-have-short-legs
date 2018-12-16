@@ -2,6 +2,11 @@
 title: Lies have short legs
 ---
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+
 # Lies have short legs
 ## Project for CS-401 Applied Data Analysis Course at EPFL
 
@@ -40,7 +45,7 @@ and later rechecked by three editors, the assigned label comes on a [scale of si
 
 We scraped the API of Politifact, [example API call](http://www.politifact.com/api/v/2/statement/99/?format=json) in order to collect as many data points as possible.
 
-![labels_counts_overall](/images/label_counts_overall.png)
+<a data-fancybox="gallery" href="/images/label_counts_overall.png"><img src="/images/label_counts_overall.png"></a>
 
 As can be seen the label `mostly false` does not occur in our dataset. The
 labels seem to follow a normal distribution with a centre around `half-true`.
