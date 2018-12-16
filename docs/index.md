@@ -67,7 +67,7 @@ We observe that the ratio of false-to-true statements for democrats goes slightl
 
 ## Who makes these statements?
 
-![nb_statements_10_largest_groups](nb_statements_10_largest_groups.png)
+![nb_statements_10_largest_groups](/images/nb_statements_10_largest_groups.png)
 
 The distribution of statements per group (this can be a party, a general
 organisation, a journalist, ...) shows that overall more statements from
@@ -75,8 +75,8 @@ republicans were fact-checked. This could indicate a potential bias, but
 without knowing the complete number of statements made this is not enough to
 say that this source is biased.
 
-![nb_rulings_for_major_parties.png](nb_rulings_for_major_parties.png)
-![nb_simple_rulings_for_major_parties.png](nb_simple_rulings_for_major_parties.png)
+![nb_rulings_for_major_parties.png](/images/nb_rulings_for_major_parties.png)
+![nb_simple_rulings_for_major_parties.png](/images/nb_simple_rulings_for_major_parties.png)
 
 Given the rulings themselves we can clearly see that Republicans lie more (38%
 vs 21%). Both parties have roughly the same amount of true statements (3255 and
@@ -120,7 +120,7 @@ much higher likelihood to be judged to lie. We again stress the point, that
 this is does not necessarily indicate a potential bias, as we lack ground
 truth.
 
-![ratio_comparision_author_basis](ratio_comparision_author_basis.png)
+![ratio_comparision_author_basis](/images/ratio_comparision_author_basis.png)
 
 The ratio is however very drastic and underlines more the selection bias of
 statements, the statements were probably not randomly selected. Instead the
