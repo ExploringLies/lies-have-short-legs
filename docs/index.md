@@ -3,8 +3,14 @@ layout: default
 title: blub
 ---
 
-%h1
-  title
-%p
-  some paragaph
+# title
 
+some paragaph
+
+## subtitle
+
+more stuff...
+
+- l1
+- l2
+- l3
