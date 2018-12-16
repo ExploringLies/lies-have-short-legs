@@ -127,7 +127,7 @@ selection is biased towards what the organisation deemed to be newsworthy. The
 ratio of lies could therefore lie much lower.
 
 Based on this we deem the source to somewhat reliable but also biased, but not
-biased enough to not consider the data as valuable and insightful.
+biased enough to not consider the data valuable and insightful.
 
 ## Number of statements per speaker
 
