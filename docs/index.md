@@ -280,11 +280,11 @@ These two plots show summed negative statements (_false_, _pants-fire_, _barely_
 
 
 ## Lying cantons?
-Let's see the number of statements depending on the canton. What canton gave the most number of statements?
+Let's see the number of statements depending on the state. In which state there was the most number of statements given?
 
 <a data-fancybox="gallery" href="images/map1.png"><img src="images/map1.png"></a>
 
-And now, what are the states that had the most number of negative/false statements (count):
+And now, what are the states in which the most number of negative/false statements (count) was given:
 
 <a data-fancybox="gallery" href="images/map2.png"><img src="images/map2.png"></a>
 
