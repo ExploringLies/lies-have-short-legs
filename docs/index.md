@@ -88,15 +88,7 @@ Given the rulings themselves we can clearly see that Republicans lie more (38%
 vs 21%). Both parties have roughly the same amount of true statements (3255 and
 3105 for the Republicans and the Democrats respectively).
 
-<a data-fancybox="gallery" href="images/job_title_plot.png"><img src="images/job_title_plot.png"></a>
-
-<a data-fancybox="gallery" href="images/biggest_liers_plot.png"><img src="images/biggest_liers_plot.png"></a>
-
-
 ## What are the statements about?
-
-<a data-fancybox="gallery" href="images/subjects_plot.png"><img src="images/subjects_plot.png"></a>
-
 
 The importance of the different political subjects varies. Most common subject
 turns out to be economy with nearly **3500** statements. The second one appears
@@ -105,13 +97,6 @@ statements. We have **1500** statements related to family, **1300** to health,
 **900** to immigration, **900** to environment. We can observe that all these
 subjects are recurrent in politics. Economy seems to be particularly prominent
 in these statements. This might possibly reflect politics priorities.
-
-## Where were these statements made?
-
-<a data-fancybox="gallery" href="images/states_plot.png"><img src="images/states_plot.png"></a>
-
-<a data-fancybox="gallery" href="images/context_plot.png"><img src="images/context_plot.png"></a>
-
 
 
 ## On the source and quality of the statements
