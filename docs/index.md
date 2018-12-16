@@ -63,7 +63,7 @@ The distribution of labels over the years is reflects the general amount of data
 We observe that the ratio of false-to-true statements for democrats goes slightly downwards, but for Republicans the ratio is on a steep climb.
 
 
-**TODO**
+**TODO:**
 
 ## Who makes these statements?
 
@@ -85,24 +85,24 @@ vs 21%). Both parties have roughly the same amount of true statements (3255 and
 ![job_title_plot](/images/job_title_plot.png)
 ![biggest_liers_plot](/images/biggest_liers_plot.png)
 
-**TODO**
+**TODO:**
 
 ## What are the statements about?
 
 ![subjects_plot](/images/subjects_plot.png)
 
-**TODO**
+**TODO:**
 
 ## Where were these statements made?
 
 ![states_plot](/images/states_plot.png)
 ![context_plot](/images/context_plot.png)
 
-**TODO**
+**TODO:**
 
 ## Bringing in election data
 
-**TODO**
+**TODO:**
 
 ## On the source and quality of the statements
 
@@ -115,47 +115,66 @@ Donations exceeding $1'000 are [publicly listed](https://www.politifact.com/trut
 
 ## Research questions Here are the research questions we would like to address
 during the project:
-- **Number of lies per politicians or speaker**
-geojson->statement_info/speaker/total_count and true count
+- **Number of lies per speaker**
+  
+<!-- <a data-fancybox="gallery" href="images/label_counts_overall.png"><img src="images/label_counts_overall.png"></a> -->
+**TODO:**
 
-- **Evolution during time of lies (in percentage compared to the statements)**
-geojson/statement_info/statement_date take the proportion of lies compared to
-all statements with a moving window or a hist plot
+- **The evolution of lies during time?**
+
+<a data-fancybox="gallery" href="images/truth_vs_lie.png"><img src="images/truth_vs_lie.png"></a>
+**TODO:**
 
 - **Who are the biggest liars (people/groups/context)**
-group by statement_info/speaker/id and first_name and last_name
-
-- **How do politicians behave, are lies part of their politics?**
-Select politicians (column5), number of lies (count(where column2 is a lie)),
-number of sentences in total (count all lines grouped by column5)
-
-- **When do they lie? Do they lie before elections?**
-Data needed: number of lies, number of sentence, dates, date of election
-
-- **Is there a correlation between politicians being voted out of office and
-- their lies?**
-politicians voted out, date, number of lies, number of sentences.
+**TODO:**
 
 - **Do politicians coming from different states lie more?**
-countries (states column 7), politicians (column 6),
+**TODO:**
 
-- **Do they lie more when doing federal vs state politics?**
+- **When do they lie?**
+Let's find out during which months the number of false statements is the biggest. False statements include statements that are _false_, _pants-fire_, and _barely_true_.
 
-- **Are they parties who lies more?**
-statement_info/speaker/party/party or id
+First, let's see the total count distribution of statements over the months.
+
+<a data-fancybox="gallery" href="images/statement_month_count.png"><img src="images/statement_month_count.png"></a>
+
+From this plot we can see that the biggest number of statements is made during the October probably because the voting usually ends in November.
+
+Now, it will be nice to see the count of statement labels during each month, to see how many statements were positive (_true_, _mostly-true_, _half-true) and negative depending on the month. Labels are noted in the plot's legend.
+
+<a data-fancybox="gallery" href="images/statement_month_count_with_labels.png"><img src="images/statement_month_count_with_labels.png"></a>
+
+From this plot, we can notice that the biggest number of false statements is given during the October as well. In addition, the number of _Pants on Fire_ statements is also the biggest during the October. We should not conclude here that polititians lie the most durning the October. It is true that the number of false statements during the October is the highest, but we should not forget that also the total number of statements is also highest during this month.
+
+Let's see the percentage of negative statements in comparison to the total amount of statements given in that month.
+
+<a data-fancybox="gallery" href="images/statement_month_count_percentage.png"><img src="images/statement_month_count_percentage.png"></a>
+
+And let's see it normalized:
+
+<a data-fancybox="gallery" href="images/statement_month_count_percentage_norm.png"><img src="images/statement_month_count_percentage_norm.png"></a>
+
+In the end we see, that indeed the biggest number of negative statements is given durng the October, around **62.15 %**.
+
+On the other hand, the biggest number of positive/true statements is given during the January, around **50.73 %**.
+
+It is interesting to see that there is no time where truth leads the game. The number of negative/false statements is always at least 50% or above.
+
+
+
+- **Lying cantons?**
+**TODO:**
+
+
+
+
+
 
 
 
 # References
-- Paper: William Yang Wang, "Liar, Liar Pants on Fire": A New Benchmark Dataset
-- for Fake News Detection, to appear in Proceedings of the 55th Annual Meeting
-- of the Association for Computational Linguistics (ACL 2017), web:
-- [https://arxiv.org/pdf/1705.00648.pdf](https://arxiv.org/pdf/1705.00648.pdf),
-- short paper, Vancouver, BC, Canada, July 30-August 4, ACL.  Dataset link:
-- [https://www.cs.ucsb.edu/~william/data/liar_dataset.zip](https://www.cs.ucsb.edu/~william/data/liar_dataset.zip)
-- Github dataset link:
-- [https://github.com/nishitpatel01/Fake_News_Detection/tree/master/liar_dataset](https://github.com/nishitpatel01/Fake_News_Detection/tree/master/liar_dataset)
-- Website:
-- [https://www.cs.ucsb.edu/~william/software.html](https://www.cs.ucsb.edu/~william/software.html)
-- Politifact API:
-- [https://www.politifact.com//api/v/2/statement/11685/?format=json](https://www.politifact.com//api/v/2/statement/11685/?format=json)
+- Paper: William Yang Wang, "Liar, Liar Pants on Fire": A New Benchmark Dataset for Fake News Detection, to appear in Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics (ACL 2017), web: [https://arxiv.org/pdf/1705.00648.pdf](https://arxiv.org/pdf/1705.00648.pdf),
+- Vancouver, BC, Canada, July 30-August 4, ACL. Dataset link:[https://www.cs.ucsb.edu/~william/data/liar_dataset.zip](https://www.cs.ucsb.edu/~william/data/liar_dataset.zip)
+- Github dataset link:[https://github.com/nishitpatel01/Fake_News_Detection/tree/master/liar_dataset](https://github.com/nishitpatel01/Fake_News_Detection/tree/master/liar_dataset)
+- Website: [https://www.cs.ucsb.edu/~william/software.html](https://www.cs.ucsb.edu/~william/software.html)
+- Politifact API: [https://www.politifact.com//api/v/2/statement/11685/?format=json](https://www.politifact.com//api/v/2/statement/11685/?format=json)
