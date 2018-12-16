@@ -50,6 +50,7 @@ from utils.statement_handling import extract_information, safe_json_read
 from importlib import reload
 import matplotlib.pyplot as plt
 import seaborn as sns
+sns.set()
 
 %matplotlib inline
 import utils.statement_handling as SH
@@ -97,16 +98,17 @@ statements.shape
 
 # <codecell>
 
-sns.barplot(data=group_and_count(statements, 'label'), x='count', y='label')
+truhometer_labels = ['pants-fire', 'false', 'mostly-false', 'half-true', 'mostly-true', 'true']
+only_truthometer_label_idx = statements['label'].isin(truhometer_labels)
+
+# <codecell>
+
+sns.barplot(data=group_and_count(statements.loc[only_truthometer_label_idx, :], 'label'), x='count', y='label', order=truhometer_labels)
 plt.savefig('../docs/images/label_counts_overall.png')
 
 # <codecell>
 
-statements[['statement_date']].describe()
-
-# <codecell>
-
-
+statements.loc[only_truthometer_label_idx,['statement_date']].describe()
 
 # <codecell>
 
@@ -118,12 +120,11 @@ def add_year(df, year):
     df['year'] = year
     return df
 
-truhometer_labels = ['pants-fire', 'false', 'mostly-false', 'half-true', 'mostly-true', 'true']
-only_truthometer_label_idx = statements['label'].isin(truhometer_labels)
 
 d = pd.concat([add_year(group_and_count(statements.loc[(statements['statement_date'].dt.year == year) & only_truthometer_label_idx,: ], 'label'), year) for year in b])
 f = plt.figure(figsize=(20, 10))
 sns.barplot(data=d, x='count', y='label', hue='year')
+plt.savefig('../docs/images/labels_over_years.png')
 
 # <codecell>
 
