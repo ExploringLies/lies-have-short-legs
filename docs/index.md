@@ -113,25 +113,50 @@ Donations exceeding $1'000 are [publicly listed](https://www.politifact.com/trut
 
 
 
-## Research questions Here are the research questions we would like to address
-during the project:
-- **Number of lies per speaker**
+## Number of lies per speaker
   
 <!-- <a data-fancybox="gallery" href="images/label_counts_overall.png"><img src="images/label_counts_overall.png"></a> -->
 **TODO:**
 
-- **The evolution of lies during time?**
+## The evolution of lies during time?
 
-<a data-fancybox="gallery" href="images/truth_vs_lie.png"><img src="images/truth_vs_lie.png"></a>
+<a data-fancybox="gallery" href="images/statement_years_count.png"><img src="images/statement_years_count.png"></a>
 **TODO:**
 
-- **Who are the biggest liars (people/groups/context)**
+## Who are the biggest liars (people/groups/context)
 **TODO:**
 
-- **Do politicians coming from different states lie more?**
+## Do politicians coming from different states lie more?
 **TODO:**
 
-- **When do they lie?**
+## When do they lie?
+
+### Top lying year is ...
+Let's find out during which year the number of false statements was the biggest.
+
+First, let's see the total count distribution of statements over the years.
+
+<a data-fancybox="gallery" href="images/statement_month_count.png"><img src="images/statement_month_count.png"></a>
+
+From the plot we can notice that the biggest number of statements from this dataset was collected during 2012. We can also notice a small oscillation in the counts where 2012, 2014, 2016 represent also local minima. This can probably be explained by the fact that the elections were during that years.
+
+Now, let's see the count of statements divided into groups based on label.
+
+<a data-fancybox="gallery" href="images/statement_years_count_with_labels.png"><img src="images/statement_years_count_with_labels.png"></a>
+
+From this plot we can notice that statements labeled with _Pants on Fire_ label had the highest count in 2017. On the other hand, the number of _True_ statements was the highest during 2011. Please note that this is only the count of statements, and it does not mean that plititians lied the most during 2017. Therefore, let's see the proportion:
+
+<a data-fancybox="gallery" href="images/statement_years_count_percentage.png"><img src="images/statement_years_count_percentage.png"></a>
+
+From the plot we can notice that statements collected during the 2000 and 2002 were all negative/false ones. However, the number of collected statements in that period is neglectable, so we wont discuss about it. 
+
+From the plot we can see that the biggest proportion of false statements was during 2012, around **58.54**. On the contrary, we can see that during 2007, the proportion percentage of positive/true statements was greater than the percentage of negative/false statements, around **47.79**.
+
+Let's also see it normalized:
+
+<a data-fancybox="gallery" href="images/statement_years_count_percentage_norm.png"><img src="images/statement_years_count_percentage_norm.png"></a>
+
+### Top lying month is ...
 Let's find out during which months the number of false statements is the biggest. False statements include statements that are _false_, _pants-fire_, and _barely_true_.
 
 First, let's see the total count distribution of statements over the months.
@@ -160,9 +185,11 @@ On the other hand, the biggest number of positive/true statements is given durin
 
 It is interesting to see that there is no time where truth leads the game. The number of negative/false statements is always at least 50% or above.
 
+#### Answer: The top Lie month is October, and the Top Truth month is January!
 
 
-- **Lying cantons?**
+
+## Lying cantons?
 **TODO:**
 
 
