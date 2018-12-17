@@ -31,12 +31,9 @@ For this we collected **15 471** statements from
 statements vary from state-politics to health over security concerns and were
 either submitted by the public or selected by the organisation itself for
 fact-checking. The second dataset are the public election results for 2012,
-2014, and 2016 for the house and the senate of the U.S.
+2014, and 2016 for the house and the senate of the U.S. from the [Federal Election Commission](https://transition.fec.gov/pubrec/electionresults.shtml).
 
-Before we the answer this question we want to show the content of the
-statements in the form of answering the 5Ws: Who, What, When, Where and Why.
-Since the question *Why were these statements made?* is not really answerable
-with our data we omit this question.
+
 
 ## Understanding the statements
 
