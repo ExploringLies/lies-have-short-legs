@@ -61,7 +61,7 @@ labels seem to follow a normal distribution with a centre around `half-true`.
 
 
 
-The distribution of labels over the years reflects the general amount of data for these years. **TODO check this with a better plot**
+The distribution of labels over the years reflects the general amount of data for these years.
 
 ## When were these statements made?
 
