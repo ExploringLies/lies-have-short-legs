@@ -151,7 +151,7 @@ first one occurs in 2012 with 2000 lies and the second one occurs in 2016 with
 1800 lies. Both peaks correspond to U.S. presidential elections when politics
 are at their peak of activity.
 
-## Who are the biggest liars (people/groups/context)
+## Who are the biggest liars
 
 We consider as big liar a person who is reported to lie often with respect to
 the PolitiFacts data gathered. Under these conditions the biggest liar is the
