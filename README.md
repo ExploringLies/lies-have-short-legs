@@ -18,6 +18,9 @@
 # Lies have short legs?
 Project for CS-401 Applied Data Analysis Course at EPFL
 
+# Poster 
+![Poster](poster/ADA-Poster.jpg)
+
 # Abstract
 The old quote says _Lies have short legs_ meaning lies that have short legs are those that carry you a little distance but cannot outrun the truth. However, is it really true that we cannot get away with a lie and that the truth always comes out?  
 

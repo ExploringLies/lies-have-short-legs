@@ -298,13 +298,35 @@ there was data.
 
 ## Lying states?
 Let's see the number of statements depending on the state. In which state there was the most number of statements given?
-
-
 <a data-fancybox="gallery" href="images/map1.PNG"><img src="images/map1.PNG"></a>
+We can see that the biggest number of statements was given in the Texas, New York, and Florida. But let's see what states have the higest number of false statements.
 
 And now, what are the states in which the most number of negative/false statements (count) was given:
 
 <a data-fancybox="gallery" href="images/map2.PNG"><img src="images/map2.PNG"></a>
+From the map we can observe that in New York, Texas, Florida and Wisconsin was the higest number of false statements given.
+
+These statements are given over the timespan from 2010 to 2018. But let's see the map of 2017-2018 statements and compare them with the map of U.S. election results map.
+
+<a data-fancybox="gallery" href="images/us.PNG"><img src="images/us.PNG"></a>
+
+And the U.S. senate election map is:
+
+<a data-fancybox="gallery" href="images/800px-2018_United_States_Senate_elections.svg.png"><img src="images/800px-2018_United_States_Senate_elections.svg.png"></a>
+
+
+
+
+## Context of Lying States?
+
+On the following plot we can see how many statements belong to which type of context.
+
+<a data-fancybox="gallery" href="images/stat_context.PNG"><img src="images/stat_context.PNG"></a>
+From this plot we can observe that the highest number of statements was given in the context of **interview**. The next type of context is **news**, then **campaign**, **speech**, **press**, etc. We can also observe that the biggest number of negative statements was given during the interviews (when the red bars are summed up). On the other hand, if we observe the *pants on fire* label, then we can see that the posts contain biggest number of these statements. Note: post include blog posts, facebook posts, website posts, etc. But let's not jump to the conclusions. Let's see the proportion of these labeled statements within the context (see next plot). 
+
+<a data-fancybox="gallery" href="images/stat_context-PERC.PNG"><img src="images/stat_context-PERC.PNG"></a>
+In this plot we see that interviews are not that bad proportionally. Interesting thing to notice is that during speeches, polititians tend to say more postive statements than negative ones. However, posts, still lead in the count of negative statements, even when percentage is observed.
+
 
 ## Bringing in election data
 
